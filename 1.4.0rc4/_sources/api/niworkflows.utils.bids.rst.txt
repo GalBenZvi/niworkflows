@@ -1,7 +1,0 @@
-niworkflows.utils.bids module
-=============================
-
-.. automodule:: niworkflows.utils.bids
-   :members:
-   :undoc-members:
-   :show-inheritance:

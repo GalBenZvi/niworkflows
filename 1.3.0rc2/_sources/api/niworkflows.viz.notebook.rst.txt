@@ -1,7 +1,0 @@
-niworkflows.viz.notebook module
-===============================
-
-.. automodule:: niworkflows.viz.notebook
-   :members:
-   :undoc-members:
-   :show-inheritance:

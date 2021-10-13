@@ -1,7 +1,0 @@
-niworkflows.dwi package
-=======================
-
-.. automodule:: niworkflows.dwi
-   :members:
-   :undoc-members:
-   :show-inheritance:

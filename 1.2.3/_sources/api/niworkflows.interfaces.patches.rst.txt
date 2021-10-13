@@ -1,7 +1,0 @@
-niworkflows.interfaces.patches module
-=====================================
-
-.. automodule:: niworkflows.interfaces.patches
-   :members:
-   :undoc-members:
-   :show-inheritance:

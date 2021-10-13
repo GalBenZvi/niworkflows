@@ -1,7 +1,0 @@
-niworkflows.interfaces.report\_base module
-==========================================
-
-.. automodule:: niworkflows.interfaces.report_base
-   :members:
-   :undoc-members:
-   :show-inheritance:

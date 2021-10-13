@@ -1,2 +1,0 @@
-from niworkflows.func.util import init_enhance_and_skullstrip_bold_wf
-wf = init_enhance_and_skullstrip_bold_wf(omp_nthreads=1)

@@ -1,7 +1,0 @@
-niworkflows.utils.connections module
-====================================
-
-.. automodule:: niworkflows.utils.connections
-   :members:
-   :undoc-members:
-   :show-inheritance:

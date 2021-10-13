@@ -1,7 +1,0 @@
-niworkflows.viz.utils module
-============================
-
-.. automodule:: niworkflows.viz.utils
-   :members:
-   :undoc-members:
-   :show-inheritance:

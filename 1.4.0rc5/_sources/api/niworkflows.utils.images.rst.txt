@@ -1,7 +1,0 @@
-niworkflows.utils.images module
-===============================
-
-.. automodule:: niworkflows.utils.images
-   :members:
-   :undoc-members:
-   :show-inheritance:

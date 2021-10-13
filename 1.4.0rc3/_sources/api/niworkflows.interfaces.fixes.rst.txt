@@ -1,7 +1,0 @@
-niworkflows.interfaces.fixes module
-===================================
-
-.. automodule:: niworkflows.interfaces.fixes
-   :members:
-   :undoc-members:
-   :show-inheritance:

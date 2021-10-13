@@ -1,7 +1,0 @@
-niworkflows.interfaces.confounds module
-=======================================
-
-.. automodule:: niworkflows.interfaces.confounds
-   :members:
-   :undoc-members:
-   :show-inheritance:

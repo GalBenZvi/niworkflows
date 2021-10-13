@@ -1,7 +1,0 @@
-niworkflows.interfaces.reportlets.base module
-=============================================
-
-.. automodule:: niworkflows.interfaces.reportlets.base
-   :members:
-   :undoc-members:
-   :show-inheritance:

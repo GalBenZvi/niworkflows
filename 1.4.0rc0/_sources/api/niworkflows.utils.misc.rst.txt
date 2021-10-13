@@ -1,7 +1,0 @@
-niworkflows.utils.misc module
-=============================
-
-.. automodule:: niworkflows.utils.misc
-   :members:
-   :undoc-members:
-   :show-inheritance:

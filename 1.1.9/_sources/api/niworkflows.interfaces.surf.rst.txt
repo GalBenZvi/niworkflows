@@ -1,7 +1,0 @@
-niworkflows.interfaces.surf module
-==================================
-
-.. automodule:: niworkflows.interfaces.surf
-   :members:
-   :undoc-members:
-   :show-inheritance:

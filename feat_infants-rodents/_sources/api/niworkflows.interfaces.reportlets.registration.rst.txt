@@ -1,7 +1,0 @@
-niworkflows.interfaces.reportlets.registration module
-=====================================================
-
-.. automodule:: niworkflows.interfaces.reportlets.registration
-   :members:
-   :undoc-members:
-   :show-inheritance:

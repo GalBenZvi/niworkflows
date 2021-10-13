@@ -1,7 +1,0 @@
-niworkflows.interfaces.mni module
-=================================
-
-.. automodule:: niworkflows.interfaces.mni
-   :members:
-   :undoc-members:
-   :show-inheritance:

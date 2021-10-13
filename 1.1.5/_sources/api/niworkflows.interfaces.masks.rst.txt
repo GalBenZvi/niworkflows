@@ -1,7 +1,0 @@
-niworkflows.interfaces.masks module
-===================================
-
-.. automodule:: niworkflows.interfaces.masks
-   :members:
-   :undoc-members:
-   :show-inheritance:

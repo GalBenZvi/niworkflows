@@ -1,7 +1,0 @@
-niworkflows.interfaces.itk module
-=================================
-
-.. automodule:: niworkflows.interfaces.itk
-   :members:
-   :undoc-members:
-   :show-inheritance:

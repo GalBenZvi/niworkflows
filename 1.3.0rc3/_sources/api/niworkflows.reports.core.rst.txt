@@ -1,7 +1,0 @@
-niworkflows.reports.core module
-===============================
-
-.. automodule:: niworkflows.reports.core
-   :members:
-   :undoc-members:
-   :show-inheritance:

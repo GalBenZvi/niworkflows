@@ -1,7 +1,0 @@
-niworkflows.interfaces.registration module
-==========================================
-
-.. automodule:: niworkflows.interfaces.registration
-   :members:
-   :undoc-members:
-   :show-inheritance:
