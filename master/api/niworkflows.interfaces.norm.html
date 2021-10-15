@@ -2,10 +2,11 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.interfaces.patches module" href="niworkflows.interfaces.patches.html" /><link rel="prev" title="niworkflows.interfaces.nitransforms module" href="niworkflows.interfaces.nitransforms.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.interfaces.patches module" href="niworkflows.interfaces.patches.html" /><link rel="prev" title="niworkflows.interfaces.nitransforms module" href="niworkflows.interfaces.nitransforms.html" />
 
-    <meta name="generator" content="sphinx-4.2.0+/336605b8e, furo 2021.10.09"/>
-        <title>niworkflows.interfaces.norm module - niworkflows 1.4.1+8.g3ff4869a10.dirty documentation</title>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>niworkflows.interfaces.norm module - niworkflows 1.4.1+34.gd0e12623 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -123,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">niworkflows 1.4.1+8.g3ff4869a10.dirty documentation</div></a>
+      <a href="../index.html"><div class="brand">niworkflows 1.4.1+34.gd0e12623 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -269,7 +270,7 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="module-niworkflows.interfaces.norm">
+          <section id="module-niworkflows.interfaces.norm">
 <span id="niworkflows-interfaces-norm-module"></span><h1>niworkflows.interfaces.norm module<a class="headerlink" href="#module-niworkflows.interfaces.norm" title="Permalink to this headline">¶</a></h1>
 <p>A robust ANTs T1-to-MNI registration workflow with fallback retry.</p>
 <dl class="py class">
@@ -304,7 +305,7 @@ See <a class="reference external" href="https://sourceforge.net/p/advants/discus
 <li><p><strong>lesion_mask</strong> (<em>a pathlike object or string representing an existing file</em>) – Lesion mask image.</p></li>
 <li><p><strong>moving_mask</strong> (<em>a pathlike object or string representing an existing file</em>) – Moving image mask.</p></li>
 <li><p><strong>num_threads</strong> (<em>an integer</em>) – Number of ITK threads to use.
-(Nipype <strong>default</strong> value: <code class="docutils literal notranslate"><span class="pre">4</span></code>)</p></li>
+(Nipype <strong>default</strong> value: <code class="docutils literal notranslate"><span class="pre">2</span></code>)</p></li>
 <li><p><strong>reference_image</strong> (<em>a pathlike object or string representing an existing file</em>) – Override the reference image.</p></li>
 <li><p><strong>reference_mask</strong> (<em>a pathlike object or string representing an existing file</em>) – Reference image mask.</p></li>
 <li><p><strong>settings</strong> (<em>a list of items which are a pathlike object or string representing an existing file</em>) – Pass on the list of settings files.</p></li>
@@ -383,7 +384,7 @@ image space and have the same dimensions</p>
 <p>in_file and mask_file must be in the same
 image space and have the same dimensions.</p>
 </dd></dl>
-</div>
+</section>
 
         </article>
       </div>

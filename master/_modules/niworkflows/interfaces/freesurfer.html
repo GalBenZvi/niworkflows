@@ -4,12 +4,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.2.0+/336605b8e, furo 2021.10.09"/>
-        <title>niworkflows.interfaces.freesurfer - niworkflows 1.4.0+0.g8522702f40.dirty documentation</title>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>niworkflows.interfaces.freesurfer - niworkflows 1.4.1+34.gd0e12623 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/version-switch.css" />
     
     
 
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">niworkflows 1.4.0+0.g8522702f40.dirty documentation</div></a>
+      <a href="../../../index.html"><div class="brand">niworkflows 1.4.1+34.gd0e12623 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,20 +145,18 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
     <span class="sidebar-brand-text">niworkflows</span>
-    <span id="version-slug" class="sidebar-brand-text">1.4.0 (dev)</span>
+    <span id="version-slug" class="sidebar-brand-text">1.4.1 (dev)</span>
 </a>
 
 <!-- Versions dropdown -->
-<!-- <div>
-  <span id="version-menu" class="sidebar-brand-text">1.4.0 (dev)</span>
-</div> -->
-<div id="version-menu" class="dropdown show">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="current-version" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    1.4.0 (dev)
-  </a>
-
-  <div id="v-tags" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-  </div>
+<div id="version-menu" class="version-tree">
+  <ul>
+  <li class="toctree-l1 has-children">
+  <span class="sidebar-brand-text">1.4.1 (dev)</span>
+  <input class="toctree-checkbox" id="toctree-checkbox-v" name="toctree-checkbox-v" role="switch" type="checkbox">
+  <label for="toctree-checkbox-v"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label>
+  <ul id="v-tags"></ul>
+  </ul>
 </div><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
@@ -297,12 +295,12 @@
 <span class="sd">"""FreeSurfer tools interfaces."""</span>
 
 <span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">op</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="kn">import</span> <span class="n">copyfile</span><span class="p">,</span> <span class="n">filename_to_list</span><span class="p">,</span> <span class="n">fname_presuffix</span>
-<span class="kn">from</span> <span class="nn">nipype.interfaces.base</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="k">import</span> <span class="n">copyfile</span><span class="p">,</span> <span class="n">filename_to_list</span><span class="p">,</span> <span class="n">fname_presuffix</span>
+<span class="kn">from</span> <span class="nn">nipype.interfaces.base</span> <span class="k">import</span> <span class="p">(</span>
     <span class="n">isdefined</span><span class="p">,</span>
     <span class="n">InputMultiPath</span><span class="p">,</span>
     <span class="n">BaseInterfaceInputSpec</span><span class="p">,</span>
@@ -311,11 +309,11 @@
     <span class="n">traits</span><span class="p">,</span>
     <span class="n">Directory</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">nipype.interfaces</span> <span class="kn">import</span> <span class="n">freesurfer</span> <span class="k">as</span> <span class="n">fs</span>
-<span class="kn">from</span> <span class="nn">nipype.interfaces.base</span> <span class="kn">import</span> <span class="n">SimpleInterface</span>
-<span class="kn">from</span> <span class="nn">nipype.interfaces.freesurfer.preprocess</span> <span class="kn">import</span> <span class="n">ConcatenateLTA</span><span class="p">,</span> <span class="n">RobustRegister</span>
-<span class="kn">from</span> <span class="nn">nipype.interfaces.freesurfer.utils</span> <span class="kn">import</span> <span class="n">LTAConvert</span>
-<span class="kn">from</span> <span class="nn">.reportlets.registration</span> <span class="kn">import</span> <span class="n">BBRegisterRPT</span><span class="p">,</span> <span class="n">MRICoregRPT</span>
+<span class="kn">from</span> <span class="nn">nipype.interfaces</span> <span class="k">import</span> <span class="n">freesurfer</span> <span class="k">as</span> <span class="n">fs</span>
+<span class="kn">from</span> <span class="nn">nipype.interfaces.base</span> <span class="k">import</span> <span class="n">SimpleInterface</span>
+<span class="kn">from</span> <span class="nn">nipype.interfaces.freesurfer.preprocess</span> <span class="k">import</span> <span class="n">ConcatenateLTA</span><span class="p">,</span> <span class="n">RobustRegister</span>
+<span class="kn">from</span> <span class="nn">nipype.interfaces.freesurfer.utils</span> <span class="k">import</span> <span class="n">LTAConvert</span>
+<span class="kn">from</span> <span class="nn">.reportlets.registration</span> <span class="k">import</span> <span class="n">BBRegisterRPT</span><span class="p">,</span> <span class="n">MRICoregRPT</span>
 
 
 <div class="viewcode-block" id="StructuralReference"><a class="viewcode-back" href="../../../api/niworkflows.interfaces.freesurfer.html#niworkflows.interfaces.freesurfer.StructuralReference">[docs]</a><span class="k">class</span> <span class="nc">StructuralReference</span><span class="p">(</span><span class="n">fs</span><span class="o">.</span><span class="n">RobustTemplate</span><span class="p">):</span>
@@ -683,7 +681,7 @@
 
 
 <div class="viewcode-block" id="inject_skullstripped"><a class="viewcode-back" href="../../../api/niworkflows.interfaces.freesurfer.html#niworkflows.interfaces.freesurfer.inject_skullstripped">[docs]</a><span class="k">def</span> <span class="nf">inject_skullstripped</span><span class="p">(</span><span class="n">subjects_dir</span><span class="p">,</span> <span class="n">subject_id</span><span class="p">,</span> <span class="n">skullstripped</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">nilearn.image</span> <span class="kn">import</span> <span class="n">resample_to_img</span><span class="p">,</span> <span class="n">new_img_like</span>
+    <span class="kn">from</span> <span class="nn">nilearn.image</span> <span class="k">import</span> <span class="n">resample_to_img</span><span class="p">,</span> <span class="n">new_img_like</span>
 
     <span class="n">mridir</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subjects_dir</span><span class="p">,</span> <span class="n">subject_id</span><span class="p">,</span> <span class="s2">"mri"</span><span class="p">)</span>
     <span class="n">t1</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mridir</span><span class="p">,</span> <span class="s2">"T1.mgz"</span><span class="p">)</span>
@@ -746,8 +744,8 @@
 <span class="sd">         cerebral brain is segmented out).</span>
 
 <span class="sd">    """</span>
-    <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">morphology</span> <span class="k">as</span> <span class="n">sim</span>
-    <span class="kn">from</span> <span class="nn">scipy.ndimage.morphology</span> <span class="kn">import</span> <span class="n">binary_fill_holes</span>
+    <span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">morphology</span> <span class="k">as</span> <span class="n">sim</span>
+    <span class="kn">from</span> <span class="nn">scipy.ndimage.morphology</span> <span class="k">import</span> <span class="n">binary_fill_holes</span>
 
     <span class="c1"># Read aseg data</span>
     <span class="n">bmask</span> <span class="o">=</span> <span class="n">aseg</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -771,7 +769,7 @@
 <span class="sd">    https://github.com/nipy/mindboggle/blob/master/mindboggle/guts/segment.py#L1660</span>
 
 <span class="sd">    """</span>
-    <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">morphology</span> <span class="k">as</span> <span class="n">sim</span>
+    <span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">morphology</span> <span class="k">as</span> <span class="n">sim</span>
 
     <span class="n">selem</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">ball</span><span class="p">(</span><span class="n">bw</span><span class="p">)</span>
 
@@ -885,7 +883,6 @@
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/scripts/main.js"></script>
-    <script src="../../../_static/js/bootstrap.bundle.min.js"></script>
     <script src="../../../_static/js/version-switch.js"></script>
     </body>
 </html>

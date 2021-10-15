@@ -2,10 +2,11 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.interfaces.bold module" href="niworkflows.interfaces.bold.html" /><link rel="prev" title="niworkflows.interfaces.reportlets.segmentation module" href="niworkflows.interfaces.reportlets.segmentation.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.interfaces.bold module" href="niworkflows.interfaces.bold.html" /><link rel="prev" title="niworkflows.interfaces.reportlets.segmentation module" href="niworkflows.interfaces.reportlets.segmentation.html" />
 
-    <meta name="generator" content="sphinx-4.2.0+/336605b8e, furo 2021.10.09"/>
-        <title>niworkflows.interfaces.bids module - niworkflows 1.4.1+8.g3ff4869a10.dirty documentation</title>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>niworkflows.interfaces.bids module - niworkflows 1.4.1+34.gd0e12623 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -123,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">niworkflows 1.4.1+8.g3ff4869a10.dirty documentation</div></a>
+      <a href="../index.html"><div class="brand">niworkflows 1.4.1+34.gd0e12623 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -269,7 +270,7 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="module-niworkflows.interfaces.bids">
+          <section id="module-niworkflows.interfaces.bids">
 <span id="niworkflows-interfaces-bids-module"></span><h1>niworkflows.interfaces.bids module<a class="headerlink" href="#module-niworkflows.interfaces.bids" title="Permalink to this headline">¶</a></h1>
 <p>Interfaces for handling BIDS-like neuroimaging structures.</p>
 <dl class="py class">
@@ -341,7 +342,7 @@ other FreeSurfer interfaces.</p>
 </ul>
 </dd>
 <dt class="field-odd">Outputs</dt>
-<dd class="field-odd"><p><strong>subjects_dir</strong> (<em>a directory name or an object implementing the os.PathLike interface</em>) – FreeSurfer subjects directory.</p>
+<dd class="field-odd"><p><strong>subjects_dir</strong> (<em>a string or os.PathLike object referring to an existing directory</em>) – FreeSurfer subjects directory.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -636,7 +637,7 @@ a single image, the session entity is removed automatically.</p>
 </dd>
 <dt class="field-even">Optional Inputs</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>base_directory</strong> (<em>a directory name or an object implementing the os.PathLike interface</em>) – Path to the base directory for storing data.</p></li>
+<li><p><strong>base_directory</strong> (<em>a string or os.PathLike object</em>) – Path to the base directory for storing data.</p></li>
 <li><p><strong>check_hdr</strong> (<em>a boolean</em>) – Fix headers of NIfTI outputs.
 (Nipype <strong>default</strong> value: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p></li>
 <li><p><strong>compress</strong> (<em>a list of items which are a boolean or None</em>) – Whether <code class="docutils literal notranslate"><span class="pre">in_file</span></code> should be compressed (True), uncompressed (False) or left unmodified (None, default).
@@ -737,7 +738,7 @@ a single image, the session entity is removed automatically.</p>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">niworkflows.interfaces.bids._ReadSidecarJSONOutputSpec</span></code></p>
 </dd></dl>
 </dd></dl>
-</div>
+</section>
 
         </article>
       </div>

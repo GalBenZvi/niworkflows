@@ -4,12 +4,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.2.0+/336605b8e, furo 2021.10.09"/>
-        <title>niworkflows.utils.misc - niworkflows 1.4.0+0.g8522702f40.dirty documentation</title>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>niworkflows.utils.misc - niworkflows 1.4.1+34.gd0e12623 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/version-switch.css" />
     
     
 
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">niworkflows 1.4.0+0.g8522702f40.dirty documentation</div></a>
+      <a href="../../../index.html"><div class="brand">niworkflows 1.4.1+34.gd0e12623 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,20 +145,18 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
     <span class="sidebar-brand-text">niworkflows</span>
-    <span id="version-slug" class="sidebar-brand-text">1.4.0 (dev)</span>
+    <span id="version-slug" class="sidebar-brand-text">1.4.1 (dev)</span>
 </a>
 
 <!-- Versions dropdown -->
-<!-- <div>
-  <span id="version-menu" class="sidebar-brand-text">1.4.0 (dev)</span>
-</div> -->
-<div id="version-menu" class="dropdown show">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="current-version" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    1.4.0 (dev)
-  </a>
-
-  <div id="v-tags" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-  </div>
+<div id="version-menu" class="version-tree">
+  <ul>
+  <li class="toctree-l1 has-children">
+  <span class="sidebar-brand-text">1.4.1 (dev)</span>
+  <input class="toctree-checkbox" id="toctree-checkbox-v" name="toctree-checkbox-v" role="switch" type="checkbox">
+  <label for="toctree-checkbox-v"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label>
+  <ul id="v-tags"></ul>
+  </ul>
 </div><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
@@ -335,7 +333,7 @@
 <span class="sd">    ...</span>
 
 <span class="sd">    """</span>
-    <span class="kn">from</span> <span class="nn">templateflow.api</span> <span class="kn">import</span> <span class="n">get</span> <span class="k">as</span> <span class="n">get_template</span>
+    <span class="kn">from</span> <span class="nn">templateflow.api</span> <span class="k">import</span> <span class="n">get</span> <span class="k">as</span> <span class="n">get_template</span>
 
     <span class="c1"># Massage spec (start creating if None)</span>
     <span class="n">template_spec</span> <span class="o">=</span> <span class="n">template_spec</span> <span class="ow">or</span> <span class="p">{}</span>
@@ -382,7 +380,7 @@
 
 <span class="sd">    """</span>
     <span class="kn">import</span> <span class="nn">os</span>
-    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="kn">import</span> <span class="n">filename_to_list</span>
+    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="k">import</span> <span class="n">filename_to_list</span>
 
     <span class="n">base</span><span class="p">,</span> <span class="n">in_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename_to_list</span><span class="p">(</span><span class="n">in_files</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">subject_label</span> <span class="o">=</span> <span class="n">in_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"_"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
@@ -400,7 +398,7 @@
 
 <span class="sd">    """</span>
     <span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">op</span>
-    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="kn">import</span> <span class="n">fname_presuffix</span><span class="p">,</span> <span class="n">filename_to_list</span>
+    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="k">import</span> <span class="n">fname_presuffix</span><span class="p">,</span> <span class="n">filename_to_list</span>
 
     <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">fname_presuffix</span><span class="p">(</span><span class="n">filename_to_list</span><span class="p">(</span><span class="n">in_files</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">))</span></div>
 
@@ -414,7 +412,7 @@
 
 
 <span class="k">def</span> <span class="nf">_read_pkl</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="kn">import</span> <span class="n">loadcrash</span>
+    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="k">import</span> <span class="n">loadcrash</span>
 
     <span class="n">crash_data</span> <span class="o">=</span> <span class="n">loadcrash</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"file"</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s2">"traceback"</span><span class="p">:</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">crash_data</span><span class="p">[</span><span class="s2">"traceback"</span><span class="p">])}</span>
@@ -440,7 +438,7 @@
 <span class="sd">    '...ValueError: zero-size array to reduction operation minimum which has no identity'</span>
 
 <span class="sd">    """</span>
-    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 
     <span class="n">lines</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"file"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">)}</span>
@@ -497,7 +495,7 @@
 <span class="sd">    ('sub-01_bold.func', '.gii')</span>
 
 <span class="sd">    """</span>
-    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 
     <span class="n">basename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="n">stem</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">basename</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">".gz"</span><span class="p">))</span><span class="o">.</span><span class="n">stem</span>
@@ -507,8 +505,8 @@
 <span class="k">def</span> <span class="nf">_copy_any</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">os</span>
     <span class="kn">import</span> <span class="nn">gzip</span>
-    <span class="kn">from</span> <span class="nn">shutil</span> <span class="kn">import</span> <span class="n">copyfileobj</span>
-    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="kn">import</span> <span class="n">copyfile</span>
+    <span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">copyfileobj</span>
+    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="k">import</span> <span class="n">copyfile</span>
 
     <span class="n">src_isgz</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".gz"</span><span class="p">)</span>
     <span class="n">dst_isgz</span> <span class="o">=</span> <span class="n">dst</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".gz"</span><span class="p">)</span>
@@ -545,7 +543,7 @@
 <span class="sd">    This function is not guaranteed to work across multiple threads or processes.</span>
 
 <span class="sd">    """</span>
-    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
     <span class="kn">import</span> <span class="nn">shutil</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -591,10 +589,10 @@
 <span class="sd">        FreeSurfer successfully executed (valid license)</span>
 
 <span class="sd">    """</span>
-    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
     <span class="kn">import</span> <span class="nn">subprocess</span> <span class="k">as</span> <span class="nn">sp</span>
-    <span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">TemporaryDirectory</span>
-    <span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="kn">import</span> <span class="n">resource_filename</span>
+    <span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">TemporaryDirectory</span>
+    <span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="k">import</span> <span class="n">resource_filename</span>
 
     <span class="k">with</span> <span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmpdir</span><span class="p">:</span>
         <span class="c1"># quick FreeSurfer command</span>
@@ -640,7 +638,6 @@
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/scripts/main.js"></script>
-    <script src="../../../_static/js/bootstrap.bundle.min.js"></script>
     <script src="../../../_static/js/version-switch.js"></script>
     </body>
 </html>

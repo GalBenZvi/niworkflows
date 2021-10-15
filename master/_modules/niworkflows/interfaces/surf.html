@@ -4,12 +4,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.2.0+/336605b8e, furo 2021.10.09"/>
-        <title>niworkflows.interfaces.surf - niworkflows 1.4.0+0.g8522702f40.dirty documentation</title>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>niworkflows.interfaces.surf - niworkflows 1.4.1+34.gd0e12623 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/version-switch.css" />
     
     
 
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">niworkflows 1.4.0+0.g8522702f40.dirty documentation</div></a>
+      <a href="../../../index.html"><div class="brand">niworkflows 1.4.1+34.gd0e12623 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,20 +145,18 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
     <span class="sidebar-brand-text">niworkflows</span>
-    <span id="version-slug" class="sidebar-brand-text">1.4.0 (dev)</span>
+    <span id="version-slug" class="sidebar-brand-text">1.4.1 (dev)</span>
 </a>
 
 <!-- Versions dropdown -->
-<!-- <div>
-  <span id="version-menu" class="sidebar-brand-text">1.4.0 (dev)</span>
-</div> -->
-<div id="version-menu" class="dropdown show">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="current-version" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    1.4.0 (dev)
-  </a>
-
-  <div id="v-tags" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-  </div>
+<div id="version-menu" class="version-tree">
+  <ul>
+  <li class="toctree-l1 has-children">
+  <span class="sidebar-brand-text">1.4.1 (dev)</span>
+  <input class="toctree-checkbox" id="toctree-checkbox-v" name="toctree-checkbox-v" role="switch" type="checkbox">
+  <label for="toctree-checkbox-v"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label>
+  <ul id="v-tags"></ul>
+  </ul>
 </div><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
@@ -297,14 +295,14 @@
 <span class="sd">"""Handling surfaces."""</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
 
-<span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="kn">import</span> <span class="n">fname_presuffix</span>
-<span class="kn">from</span> <span class="nn">nipype.interfaces.base</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="k">import</span> <span class="n">fname_presuffix</span>
+<span class="kn">from</span> <span class="nn">nipype.interfaces.base</span> <span class="k">import</span> <span class="p">(</span>
     <span class="n">BaseInterfaceInputSpec</span><span class="p">,</span>
     <span class="n">TraitedSpec</span><span class="p">,</span>
     <span class="n">DynamicTraitedSpec</span><span class="p">,</span>
@@ -438,7 +436,7 @@
     <span class="p">)</span>
     <span class="n">_excluded</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"extprefix"</span><span class="p">,)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">inputs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">inputs</span><span class="p">):</span>
         <span class="sd">"""Initialize the interface."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">pattern</span><span class="p">:</span>
@@ -460,7 +458,7 @@
         <span class="n">in_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">in_file</span><span class="p">)</span>
         <span class="n">extension</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">in_file</span><span class="o">.</span><span class="n">suffixes</span><span class="p">[</span><span class="o">-</span><span class="p">((</span><span class="n">in_file</span><span class="o">.</span><span class="n">suffixes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">".gz"</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):])</span>
         <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">in_file</span><span class="o">.</span><span class="n">name</span><span class="p">[:</span> <span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">extension</span><span class="p">)])</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="s2">"extension"</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'extprefix'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">''</span><span class="si">}{</span><span class="n">extension</span><span class="si">}</span><span class="s2">"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="s2">"extension"</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="s2">"{info.pop('extprefix', None) or ''}</span><span class="si">{extension}</span><span class="s2">"</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
         <span class="k">if</span> <span class="s2">"hemi"</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="s2">"hemi"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="s2">"hemi"</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
@@ -693,7 +691,7 @@
     <span class="n">output_spec</span> <span class="o">=</span> <span class="n">_SurfacesToPointCloudOutputSpec</span>
 
     <span class="k">def</span> <span class="nf">_run_interface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">runtime</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+        <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 
         <span class="n">giis</span> <span class="o">=</span> <span class="p">[</span><span class="n">nb</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">in_files</span><span class="p">]</span>
         <span class="n">vertices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">g</span><span class="o">.</span><span class="n">darrays</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">giis</span><span class="p">])</span>
@@ -753,7 +751,7 @@
     <span class="n">output_spec</span> <span class="o">=</span> <span class="n">_PLYtoGiftiOutputSpec</span>
 
     <span class="k">def</span> <span class="nf">_run_interface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">runtime</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+        <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 
         <span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">"GeometricType"</span><span class="p">:</span> <span class="s2">"Anatomical"</span><span class="p">,</span>
@@ -810,7 +808,7 @@
     <span class="n">output_spec</span> <span class="o">=</span> <span class="n">_UnzipJoinedSurfacesOutputSpec</span>
 
     <span class="k">def</span> <span class="nf">_run_interface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">runtime</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+        <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 
         <span class="n">groups</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
         <span class="n">in_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">it</span> <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">in_files</span> <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
@@ -927,9 +925,9 @@
 
 <div class="viewcode-block" id="pointcloud2ply"><a class="viewcode-back" href="../../../api/niworkflows.interfaces.surf.html#niworkflows.interfaces.surf.pointcloud2ply">[docs]</a><span class="k">def</span> <span class="nf">pointcloud2ply</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">"""Converts the file to PLY format"""</span>
-    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-    <span class="kn">from</span> <span class="nn">pyntcloud</span> <span class="kn">import</span> <span class="n">PyntCloud</span>
+    <span class="kn">from</span> <span class="nn">pyntcloud</span> <span class="k">import</span> <span class="n">PyntCloud</span>
 
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">vertices</span><span class="p">,</span> <span class="n">normals</span><span class="p">)))</span>
     <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">,</span> <span class="s2">"nx"</span><span class="p">,</span> <span class="s2">"ny"</span><span class="p">,</span> <span class="s2">"nz"</span><span class="p">]</span>
@@ -944,15 +942,15 @@
 
 <div class="viewcode-block" id="ply2gii"><a class="viewcode-back" href="../../../api/niworkflows.interfaces.surf.html#niworkflows.interfaces.surf.ply2gii">[docs]</a><span class="k">def</span> <span class="nf">ply2gii</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">"""Convert from ply to GIfTI"""</span>
-    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">eye</span>
-    <span class="kn">from</span> <span class="nn">nibabel.gifti</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">eye</span>
+    <span class="kn">from</span> <span class="nn">nibabel.gifti</span> <span class="k">import</span> <span class="p">(</span>
         <span class="n">GiftiMetaData</span><span class="p">,</span>
         <span class="n">GiftiCoordSystem</span><span class="p">,</span>
         <span class="n">GiftiImage</span><span class="p">,</span>
         <span class="n">GiftiDataArray</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="kn">from</span> <span class="nn">pyntcloud</span> <span class="kn">import</span> <span class="n">PyntCloud</span>
+    <span class="kn">from</span> <span class="nn">pyntcloud</span> <span class="k">import</span> <span class="n">PyntCloud</span>
 
     <span class="n">in_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
     <span class="n">surf</span> <span class="o">=</span> <span class="n">PyntCloud</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">in_file</span><span class="p">))</span>
@@ -993,7 +991,7 @@
 
 
 <div class="viewcode-block" id="get_gii_meta"><a class="viewcode-back" href="../../../api/niworkflows.interfaces.surf.html#niworkflows.interfaces.surf.get_gii_meta">[docs]</a><span class="k">def</span> <span class="nf">get_gii_meta</span><span class="p">(</span><span class="n">in_file</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">nibabel</span> <span class="kn">import</span> <span class="n">load</span>
+    <span class="kn">from</span> <span class="nn">nibabel</span> <span class="k">import</span> <span class="n">load</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
         <span class="n">in_file</span> <span class="o">=</span> <span class="n">in_file</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1030,7 +1028,6 @@
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/scripts/main.js"></script>
-    <script src="../../../_static/js/bootstrap.bundle.min.js"></script>
     <script src="../../../_static/js/version-switch.js"></script>
     </body>
 </html>

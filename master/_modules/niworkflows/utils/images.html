@@ -4,12 +4,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.2.0+/336605b8e, furo 2021.10.09"/>
-        <title>niworkflows.utils.images - niworkflows 1.4.0+0.g8522702f40.dirty documentation</title>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>niworkflows.utils.images - niworkflows 1.4.1+34.gd0e12623 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/version-switch.css" />
     
     
 
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">niworkflows 1.4.0+0.g8522702f40.dirty documentation</div></a>
+      <a href="../../../index.html"><div class="brand">niworkflows 1.4.1+34.gd0e12623 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,20 +145,18 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
     <span class="sidebar-brand-text">niworkflows</span>
-    <span id="version-slug" class="sidebar-brand-text">1.4.0 (dev)</span>
+    <span id="version-slug" class="sidebar-brand-text">1.4.1 (dev)</span>
 </a>
 
 <!-- Versions dropdown -->
-<!-- <div>
-  <span id="version-menu" class="sidebar-brand-text">1.4.0 (dev)</span>
-</div> -->
-<div id="version-menu" class="dropdown show">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="current-version" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    1.4.0 (dev)
-  </a>
-
-  <div id="v-tags" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-  </div>
+<div id="version-menu" class="version-tree">
+  <ul>
+  <li class="toctree-l1 has-children">
+  <span class="sidebar-brand-text">1.4.1 (dev)</span>
+  <input class="toctree-checkbox" id="toctree-checkbox-v" name="toctree-checkbox-v" role="switch" type="checkbox">
+  <label for="toctree-checkbox-v"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label>
+  <ul id="v-tags"></ul>
+  </ul>
 </div><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
@@ -297,7 +295,7 @@
 <span class="sd">"""Utilities to manipulate images."""</span>
 <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">gzip</span> <span class="kn">import</span> <span class="n">GzipFile</span>
+<span class="kn">from</span> <span class="nn">gzip</span> <span class="k">import</span> <span class="n">GzipFile</span>
 
 
 <div class="viewcode-block" id="rotation2canonical"><a class="viewcode-back" href="../../../api/niworkflows.utils.images.html#niworkflows.utils.images.rotation2canonical">[docs]</a><span class="k">def</span> <span class="nf">rotation2canonical</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
@@ -354,7 +352,7 @@
     <span class="n">orig</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">ref_image</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">orig</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">resampled</span><span class="o">.</span><span class="n">affine</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">nipype</span> <span class="kn">import</span> <span class="n">logging</span>
+        <span class="kn">from</span> <span class="nn">nipype</span> <span class="k">import</span> <span class="n">logging</span>
 
         <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">"nipype.interface"</span><span class="p">)</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
             <span class="s2">"Affines of input and reference images do not match, "</span>
@@ -460,10 +458,10 @@
 
 <div class="viewcode-block" id="dseg_label"><a class="viewcode-back" href="../../../api/niworkflows.utils.images.html#niworkflows.utils.images.dseg_label">[docs]</a><span class="k">def</span> <span class="nf">dseg_label</span><span class="p">(</span><span class="n">in_seg</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">newpath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">"""Extract a particular label from a discrete segmentation."""</span>
-    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
     <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
     <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="kn">import</span> <span class="n">fname_presuffix</span>
+    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="k">import</span> <span class="n">fname_presuffix</span>
 
     <span class="n">newpath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">newpath</span> <span class="ow">or</span> <span class="s2">"."</span><span class="p">)</span>
 
@@ -479,10 +477,10 @@
 
 <div class="viewcode-block" id="resample_by_spacing"><a class="viewcode-back" href="../../../api/niworkflows.utils.images.html#niworkflows.utils.images.resample_by_spacing">[docs]</a><span class="k">def</span> <span class="nf">resample_by_spacing</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="n">zooms</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">"""Regrid the input image to match the new zooms."""</span>
-    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
     <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
     <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
-    <span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">map_coordinates</span>
+    <span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="k">import</span> <span class="n">map_coordinates</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">)):</span>
         <span class="n">in_file</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
@@ -523,7 +521,7 @@
     <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">smooth</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">gaussian_filter</span>
+        <span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="k">import</span> <span class="n">gaussian_filter</span>
         <span class="k">if</span> <span class="n">smooth</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">smooth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">pre_zooms</span> <span class="o">/</span> <span class="n">zooms</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">in_file</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">(),</span> <span class="n">smooth</span><span class="p">)</span>
@@ -569,7 +567,7 @@
     <span class="kn">import</span> <span class="nn">os</span>
     <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
     <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
-    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="kn">import</span> <span class="n">fname_presuffix</span>
+    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="k">import</span> <span class="n">fname_presuffix</span>
 
     <span class="n">out_file</span> <span class="o">=</span> <span class="n">fname_presuffix</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">"_demeaned"</span><span class="p">,</span> <span class="n">newpath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
     <span class="n">nii</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
@@ -629,7 +627,6 @@
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/scripts/main.js"></script>
-    <script src="../../../_static/js/bootstrap.bundle.min.js"></script>
     <script src="../../../_static/js/version-switch.js"></script>
     </body>
 </html>

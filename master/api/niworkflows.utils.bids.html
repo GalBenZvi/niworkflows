@@ -2,10 +2,11 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.utils.connections module" href="niworkflows.utils.connections.html" /><link rel="prev" title="niworkflows.utils package" href="niworkflows.utils.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.utils.connections module" href="niworkflows.utils.connections.html" /><link rel="prev" title="niworkflows.utils package" href="niworkflows.utils.html" />
 
-    <meta name="generator" content="sphinx-4.2.0+/336605b8e, furo 2021.10.09"/>
-        <title>niworkflows.utils.bids module - niworkflows 1.4.1+8.g3ff4869a10.dirty documentation</title>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>niworkflows.utils.bids module - niworkflows 1.4.1+34.gd0e12623 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -123,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">niworkflows 1.4.1+8.g3ff4869a10.dirty documentation</div></a>
+      <a href="../index.html"><div class="brand">niworkflows 1.4.1+34.gd0e12623 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -269,7 +270,7 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="module-niworkflows.utils.bids">
+          <section id="module-niworkflows.utils.bids">
 <span id="niworkflows-utils-bids-module"></span><h1>niworkflows.utils.bids module<a class="headerlink" href="#module-niworkflows.utils.bids" title="Permalink to this headline">¶</a></h1>
 <p>Helpers for handling BIDS-like neuroimaging structures.</p>
 <dl class="py exception">
@@ -361,7 +362,7 @@ Requesting all subjects in a BIDS directory root:</p>
 <span class="go">['02', '04']</span>
 </pre></div>
 </div>
-<p>Requesting two subjects, given their IDs (works with ‘sub-‘ prefixes):</p>
+<p>Requesting two subjects, given their IDs (works with ‘sub-’ prefixes):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collect_participants</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datadir</span> <span class="o">/</span> <span class="s1">'ds114'</span><span class="p">),</span> <span class="n">participant_label</span><span class="o">=</span><span class="p">[</span><span class="s1">'sub-02'</span><span class="p">,</span> <span class="s1">'sub-04'</span><span class="p">],</span>
 <span class="gp">... </span>                     <span class="n">bids_validate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">['02', '04']</span>
@@ -499,7 +500,7 @@ Requesting all subjects in a BIDS directory root:</p>
 </pre></div>
 </div>
 </dd></dl>
-</div>
+</section>
 
         </article>
       </div>

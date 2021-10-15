@@ -4,12 +4,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.2.0+/336605b8e, furo 2021.10.09"/>
-        <title>niworkflows.reports.core - niworkflows 1.4.0+0.g8522702f40.dirty documentation</title>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>niworkflows.reports.core - niworkflows 1.4.1+34.gd0e12623 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/version-switch.css" />
     
     
 
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">niworkflows 1.4.0+0.g8522702f40.dirty documentation</div></a>
+      <a href="../../../index.html"><div class="brand">niworkflows 1.4.1+34.gd0e12623 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,20 +145,18 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
     <span class="sidebar-brand-text">niworkflows</span>
-    <span id="version-slug" class="sidebar-brand-text">1.4.0 (dev)</span>
+    <span id="version-slug" class="sidebar-brand-text">1.4.1 (dev)</span>
 </a>
 
 <!-- Versions dropdown -->
-<!-- <div>
-  <span id="version-menu" class="sidebar-brand-text">1.4.0 (dev)</span>
-</div> -->
-<div id="version-menu" class="dropdown show">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="current-version" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    1.4.0 (dev)
-  </a>
-
-  <div id="v-tags" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-  </div>
+<div id="version-menu" class="version-tree">
+  <ul>
+  <li class="toctree-l1 has-children">
+  <span class="sidebar-brand-text">1.4.1 (dev)</span>
+  <input class="toctree-checkbox" id="toctree-checkbox-v" name="toctree-checkbox-v" role="switch" type="checkbox">
+  <label for="toctree-checkbox-v"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label>
+  <ul id="v-tags"></ul>
+  </ul>
 </div><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
@@ -300,14 +298,14 @@
 <span class="sd">Generalizes report generation across BIDS-Apps</span>
 
 <span class="sd">"""</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">compress</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
-<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="kn">import</span> <span class="n">resource_filename</span> <span class="k">as</span> <span class="n">pkgrf</span>
-<span class="kn">from</span> <span class="nn">bids.layout</span> <span class="kn">import</span> <span class="n">BIDSLayout</span><span class="p">,</span> <span class="n">add_config_paths</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">compress</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="k">import</span> <span class="n">resource_filename</span> <span class="k">as</span> <span class="n">pkgrf</span>
+<span class="kn">from</span> <span class="nn">bids.layout</span> <span class="k">import</span> <span class="n">BIDSLayout</span><span class="p">,</span> <span class="n">add_config_paths</span>
 <span class="kn">import</span> <span class="nn">jinja2</span>
-<span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="kn">import</span> <span class="n">copyfile</span>
+<span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="k">import</span> <span class="n">copyfile</span>
 
 <span class="c1"># Add a new figures spec</span>
 <span class="k">try</span><span class="p">:</span>
@@ -340,7 +338,7 @@
 <div class="viewcode-block" id="Element"><a class="viewcode-back" href="../../../api/niworkflows.reports.core.html#niworkflows.reports.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">"""Just a basic component of a report"""</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span></div>
 
@@ -427,7 +425,7 @@
 
 <span class="sd">    """</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"Reportlet must have a config object"</span><span class="p">)</span>
 
@@ -490,7 +488,7 @@
 <div class="viewcode-block" id="SubReport"><a class="viewcode-back" href="../../../api/niworkflows.reports.core.html#niworkflows.reports.SubReport">[docs]</a><span class="k">class</span> <span class="nc">SubReport</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
     <span class="sd">"""SubReports are sections within a Report."""</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">isnested</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reportlets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">""</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">isnested</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reportlets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">""</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reportlets</span> <span class="o">=</span> <span class="n">reportlets</span> <span class="ow">or</span> <span class="p">[]</span>
@@ -534,7 +532,7 @@
 
 <span class="sd">    """</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">out_dir</span><span class="p">,</span>
         <span class="n">run_uuid</span><span class="p">,</span>
@@ -558,7 +556,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">subject_id</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="n">subject_id</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span> <span class="k">if</span> <span class="n">subject_id</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"sub-"</span><span class="p">)</span> <span class="k">else</span> <span class="n">subject_id</span>
             <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">out_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"sub-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subject_id</span><span class="si">}</span><span class="s2">.html"</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">out_filename</span> <span class="o">=</span> <span class="n">f</span><span class="s2">"sub-</span><span class="si">{self.subject_id}</span><span class="s2">.html"</span>
 
         <span class="c1"># Default template from niworkflows</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">pkgrf</span><span class="p">(</span><span class="s2">"niworkflows"</span><span class="p">,</span> <span class="s2">"reports/report.tpl"</span><span class="p">))</span>
@@ -566,7 +564,7 @@
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_load_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">yaml</span> <span class="kn">import</span> <span class="n">safe_load</span> <span class="k">as</span> <span class="n">load</span>
+        <span class="kn">from</span> <span class="nn">yaml</span> <span class="k">import</span> <span class="n">safe_load</span> <span class="k">as</span> <span class="n">load</span>
 
         <span class="n">settings</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">packagename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">packagename</span> <span class="ow">or</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"package"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -647,7 +645,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">out_dir</span> <span class="o">/</span> <span class="s2">"sub-</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subject_id</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"log"</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_uuid</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">error_dir</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
-            <span class="kn">from</span> <span class="nn">..utils.misc</span> <span class="kn">import</span> <span class="n">read_crashfile</span>
+            <span class="kn">from</span> <span class="nn">..utils.misc</span> <span class="k">import</span> <span class="n">read_crashfile</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">errors</span> <span class="o">=</span> <span class="p">[</span><span class="n">read_crashfile</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">error_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"crash*.*"</span><span class="p">)]</span></div>
 
@@ -665,13 +663,13 @@
                 <span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             <span class="p">)</span>
             <span class="n">boilerplate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="p">(</span><span class="n">boiler_idx</span><span class="p">,</span> <span class="s2">"HTML"</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'&lt;div class="boiler-html"&gt;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1">&lt;/div&gt;'</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">boiler_idx</span><span class="p">,</span> <span class="s2">"HTML"</span><span class="p">,</span> <span class="n">f</span><span class="s1">'&lt;div class="boiler-html"&gt;</span><span class="si">{text}</span><span class="s1">&lt;/div&gt;'</span><span class="p">)</span>
             <span class="p">)</span>
             <span class="n">boiler_idx</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">logs_path</span> <span class="o">/</span> <span class="s2">"CITATION.md"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
             <span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="n">logs_path</span> <span class="o">/</span> <span class="s2">"CITATION.md"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
-            <span class="n">boilerplate</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">boiler_idx</span><span class="p">,</span> <span class="s2">"Markdown"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"&lt;pre&gt;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">&lt;/pre&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">))</span>
+            <span class="n">boilerplate</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">boiler_idx</span><span class="p">,</span> <span class="s2">"Markdown"</span><span class="p">,</span> <span class="n">f</span><span class="s2">"&lt;pre&gt;</span><span class="si">{text}</span><span class="s2">&lt;/pre&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">))</span>
             <span class="n">boiler_idx</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">logs_path</span> <span class="o">/</span> <span class="s2">"CITATION.tex"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
@@ -686,9 +684,9 @@
                 <span class="p">(</span>
                     <span class="n">boiler_idx</span><span class="p">,</span>
                     <span class="s2">"LaTeX"</span><span class="p">,</span>
-                    <span class="sa">f</span><span class="s2">"""&lt;pre&gt;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">&lt;/pre&gt;</span>
+                    <span class="n">f</span><span class="s2">"""&lt;pre&gt;</span><span class="si">{text}</span><span class="s2">&lt;/pre&gt;</span>
 <span class="s2">&lt;h3&gt;Bibliography&lt;/h3&gt;</span>
-<span class="s2">&lt;pre&gt;</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">pkgrf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">packagename</span><span class="p">,</span> <span class="s1">'data/boilerplate.bib'</span><span class="p">))</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="si">}</span><span class="s2">&lt;/pre&gt;</span>
+<span class="s2">&lt;pre&gt;{Path(pkgrf(self.packagename, 'data/boilerplate.bib')).read_text()}&lt;/pre&gt;</span>
 <span class="s2">"""</span><span class="p">,</span>
                 <span class="p">)</span>
             <span class="p">)</span>
@@ -874,7 +872,6 @@
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/scripts/main.js"></script>
-    <script src="../../../_static/js/bootstrap.bundle.min.js"></script>
     <script src="../../../_static/js/version-switch.js"></script>
     </body>
 </html>
