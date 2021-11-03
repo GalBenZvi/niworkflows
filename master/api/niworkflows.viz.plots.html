@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.viz.utils module" href="niworkflows.viz.utils.html" /><link rel="prev" title="niworkflows.viz.notebook module" href="niworkflows.viz.notebook.html" />
 
     <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
-        <title>niworkflows.viz.plots module - niworkflows 1.4.2 documentation</title>
+        <title>niworkflows.viz.plots module - niworkflows 1.4.2+9.ge179f925 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">niworkflows 1.4.2 documentation</div></a>
+      <a href="../index.html"><div class="brand">niworkflows 1.4.2+9.ge179f925 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -146,14 +146,14 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
     <span class="sidebar-brand-text">niworkflows</span>
-    <span id="version-slug" class="sidebar-brand-text">1.4.2</span>
+    <span id="version-slug" class="sidebar-brand-text">1.4.2 (dev)</span>
 </a>
 
 <!-- Versions dropdown -->
 <div id="version-menu" class="version-tree">
   <ul>
   <li class="toctree-l1 has-children">
-  <span class="sidebar-brand-text">1.4.2</span>
+  <span class="sidebar-brand-text">1.4.2 (dev)</span>
   <input class="toctree-checkbox" id="toctree-checkbox-v" name="toctree-checkbox-v" role="switch" type="checkbox">
   <label for="toctree-checkbox-v"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label>
   <ul id="v-tags"></ul>
@@ -385,12 +385,12 @@ as the “carpet plot” or “Power plot”. See Jonathan Power Neuroimage
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>func</strong> (<em>string</em>) – Path to NIfTI or CIFTI BOLD image</p></li>
+<li><p><strong>func</strong> (<em>string or nibabel-image object</em>) – Path to NIfTI or CIFTI BOLD image, or a nibabel-image object</p></li>
 <li><p><strong>atlaslabels</strong> (<em>ndarray, optional</em>) – A 3D array of integer labels from an atlas, resampled into <code class="docutils literal notranslate"><span class="pre">img</span></code> space.
 Required if <code class="docutils literal notranslate"><span class="pre">func</span></code> is a NIfTI image.</p></li>
 <li><p><strong>detrend</strong> (<em>boolean, optional</em>) – Detrend and standardize the data prior to plotting.</p></li>
 <li><p><strong>nskip</strong> (<em>int, optional</em>) – Number of volumes at the beginning of the scan marked as nonsteady state.
-Not used.</p></li>
+Only used by volumetric NIfTI.</p></li>
 <li><p><strong>size</strong> (<em>tuple, optional</em>) – Size of figure.</p></li>
 <li><p><strong>subplot</strong> (<em>matplotlib Subplot, optional</em>) – Subplot to plot figure on.</p></li>
 <li><p><strong>title</strong> (<em>string, optional</em>) – The title displayed on the figure.</p></li>
