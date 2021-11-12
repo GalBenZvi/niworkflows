@@ -5,8 +5,8 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.interfaces.plotting module" href="niworkflows.interfaces.plotting.html" /><link rel="prev" title="niworkflows.interfaces.norm module" href="niworkflows.interfaces.norm.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
-        <title>niworkflows.interfaces.patches module - niworkflows 1.4.2+13.ga9b22c12 documentation</title>
+    <meta name="generator" content="sphinx-4.3.0, furo 2021.10.09"/>
+        <title>niworkflows.interfaces.patches module - niworkflows 1.4.2+14.g7a0acdff documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">niworkflows 1.4.2+13.ga9b22c12 documentation</div></a>
+      <a href="../index.html"><div class="brand">niworkflows 1.4.2+14.g7a0acdff documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -275,7 +275,7 @@
 <p>Temporary patches.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="niworkflows.interfaces.patches.RobustACompCor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">niworkflows.interfaces.patches.</span></span><span class="sig-name descname"><span class="pre">RobustACompCor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/interfaces/patches.html#RobustACompCor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.interfaces.patches.RobustACompCor" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">niworkflows.interfaces.patches.</span></span><span class="sig-name descname"><span class="pre">RobustACompCor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/interfaces/patches.html#RobustACompCor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.interfaces.patches.RobustACompCor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nipype.algorithms.confounds.ACompCor</span></code></p>
 <p>Runs aCompCor several times if it suddenly fails with
 <a class="reference external" href="https://github.com/nipreps/fmriprep/issues/776">https://github.com/nipreps/fmriprep/issues/776</a></p>
@@ -329,7 +329,7 @@ Mutually <strong>exclusive</strong> with inputs: <code class="docutils literal n
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="niworkflows.interfaces.patches.RobustTCompCor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">niworkflows.interfaces.patches.</span></span><span class="sig-name descname"><span class="pre">RobustTCompCor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/interfaces/patches.html#RobustTCompCor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.interfaces.patches.RobustTCompCor" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">niworkflows.interfaces.patches.</span></span><span class="sig-name descname"><span class="pre">RobustTCompCor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/interfaces/patches.html#RobustTCompCor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.interfaces.patches.RobustTCompCor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nipype.algorithms.confounds.TCompCor</span></code></p>
 <p>Runs tCompCor several times if it suddenly fails with
 <a class="reference external" href="https://github.com/nipreps/fmriprep/issues/940">https://github.com/nipreps/fmriprep/issues/940</a></p>
