@@ -5,8 +5,8 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.interfaces package" href="niworkflows.interfaces.html" /><link rel="prev" title="niworkflows.func package" href="niworkflows.func.html" />
 
-    <meta name="generator" content="sphinx-4.3.0, furo 2021.10.09"/>
-        <title>niworkflows.func.util module - niworkflows 1.4.2+17.gf2442f22 documentation</title>
+    <meta name="generator" content="sphinx-4.3.1, furo 2021.10.09"/>
+        <title>niworkflows.func.util module - niworkflows 1.4.3+2.g13a7bd97 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">niworkflows 1.4.2+17.gf2442f22 documentation</div></a>
+      <a href="../index.html"><div class="brand">niworkflows 1.4.3+2.g13a7bd97 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -146,14 +146,14 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
     <span class="sidebar-brand-text">niworkflows</span>
-    <span id="version-slug" class="sidebar-brand-text">1.4.2 (dev)</span>
+    <span id="version-slug" class="sidebar-brand-text">1.4.3 (dev)</span>
 </a>
 
 <!-- Versions dropdown -->
 <div id="version-menu" class="version-tree">
   <ul>
   <li class="toctree-l1 has-children">
-  <span class="sidebar-brand-text">1.4.2 (dev)</span>
+  <span class="sidebar-brand-text">1.4.3 (dev)</span>
   <input class="toctree-checkbox" id="toctree-checkbox-v" name="toctree-checkbox-v" role="switch" type="checkbox">
   <label for="toctree-checkbox-v"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label>
   <ul id="v-tags"></ul>
@@ -306,8 +306,7 @@ but the input is left undefined (i.e., it is left open for connection)</p></li>
 the final binary mask (default: 0.85).</p></li>
 <li><p><strong>pre_mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – Indicates whether the <code class="docutils literal notranslate"><span class="pre">pre_mask</span></code> input will be set (and thus, step 1
 should be skipped).</p></li>
-<li><p><strong>multiecho</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If multiecho data was supplied, data from the first echo
-will be selected</p></li>
+<li><p><strong>multiecho</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – If multiecho data was supplied, data from the first echo will be selected</p></li>
 <li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of workflow (default: <code class="docutils literal notranslate"><span class="pre">bold_reference_wf</span></code>)</p></li>
 <li><p><strong>gen_report</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>) – Whether a mask report node should be appended in the end</p></li>
 </ul>
@@ -315,6 +314,7 @@ will be selected</p></li>
 <dt class="field-even">Inputs</dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>bold_file</strong> (<em>str</em>) – BOLD series NIfTI file</p></li>
+<li><p><strong>all_bold_files</strong> (<em>str</em>) – Validated and header-corrected BOLD series; multiple if multi-echo</p></li>
 <li><p><strong>bold_mask</strong> (<em>bool</em>) – A tentative brain mask to initialize the workflow (requires <code class="docutils literal notranslate"><span class="pre">pre_mask</span></code>
 parameter set <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p></li>
 <li><p><strong>dummy_scans</strong> (<em>int or None</em>) – Number of non-steady-state volumes specified by user at beginning of <code class="docutils literal notranslate"><span class="pre">bold_file</span></code></p></li>
