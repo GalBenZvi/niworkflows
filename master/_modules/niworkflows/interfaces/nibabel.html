@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.3.2, furo 2021.10.09"/>
-        <title>niworkflows.interfaces.nibabel - niworkflows 1.4.5+9.g836b0b5a documentation</title>
+    <meta name="generator" content="sphinx-4.4.0, furo 2021.10.09"/>
+        <title>niworkflows.interfaces.nibabel - niworkflows 1.4.5+18.g8fc145d9 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">niworkflows 1.4.5+9.g836b0b5a documentation</div></a>
+      <a href="../../../index.html"><div class="brand">niworkflows 1.4.5+18.g8fc145d9 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -390,6 +390,32 @@
         <span class="k">return</span> <span class="n">runtime</span></div>
 
 
+<span class="k">class</span> <span class="nc">_BinaryDilationInputSpec</span><span class="p">(</span><span class="n">BaseInterfaceInputSpec</span><span class="p">):</span>
+    <span class="n">in_file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"binary file to dilate"</span><span class="p">)</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="n">traits</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">usedefault</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"structure element (ball) radius"</span><span class="p">)</span>
+    <span class="n">iterations</span> <span class="o">=</span> <span class="n">traits</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">usedefault</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"repeat dilation"</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_BinaryDilationOutputSpec</span><span class="p">(</span><span class="n">TraitedSpec</span><span class="p">):</span>
+    <span class="n">out_file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"the input file, after binary dilation"</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="BinaryDilation"><a class="viewcode-back" href="../../../api/niworkflows.interfaces.nibabel.html#niworkflows.interfaces.nibabel.BinaryDilation">[docs]</a><span class="k">class</span> <span class="nc">BinaryDilation</span><span class="p">(</span><span class="n">SimpleInterface</span><span class="p">):</span>
+    <span class="sd">"""Morphological binary dilation using Scipy."""</span>
+
+    <span class="n">input_spec</span> <span class="o">=</span> <span class="n">_BinaryDilationInputSpec</span>
+    <span class="n">output_spec</span> <span class="o">=</span> <span class="n">_BinaryDilationOutputSpec</span>
+
+    <span class="k">def</span> <span class="nf">_run_interface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">runtime</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="s2">"out_file"</span><span class="p">]</span> <span class="o">=</span> <span class="n">_dilate</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">in_file</span><span class="p">,</span>
+            <span class="n">radius</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span>
+            <span class="n">iterations</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">iterations</span><span class="p">,</span>
+            <span class="n">newpath</span><span class="o">=</span><span class="n">runtime</span><span class="o">.</span><span class="n">cwd</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">runtime</span></div>
+
+
 <span class="k">class</span> <span class="nc">_SplitSeriesInputSpec</span><span class="p">(</span><span class="n">BaseInterfaceInputSpec</span><span class="p">):</span>
     <span class="n">in_file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mandatory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"input 4d image"</span><span class="p">)</span>
 
@@ -467,6 +493,25 @@
         <span class="n">img_4d</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">out_file</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="s2">"out_file"</span><span class="p">]</span> <span class="o">=</span> <span class="n">out_file</span>
+        <span class="k">return</span> <span class="n">runtime</span></div>
+
+
+<span class="k">class</span> <span class="nc">_MergeROIsInputSpec</span><span class="p">(</span><span class="n">BaseInterfaceInputSpec</span><span class="p">):</span>
+    <span class="n">in_files</span> <span class="o">=</span> <span class="n">InputMultiObject</span><span class="p">(</span><span class="n">File</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"ROI files to be merged"</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_MergeROIsOutputSpec</span><span class="p">(</span><span class="n">TraitedSpec</span><span class="p">):</span>
+    <span class="n">out_file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"NIfTI containing all ROIs"</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="MergeROIs"><a class="viewcode-back" href="../../../api/niworkflows.interfaces.nibabel.html#niworkflows.interfaces.nibabel.MergeROIs">[docs]</a><span class="k">class</span> <span class="nc">MergeROIs</span><span class="p">(</span><span class="n">SimpleInterface</span><span class="p">):</span>
+    <span class="sd">"""Combine multiple region of interest files (3D or 4D) into a single file"""</span>
+
+    <span class="n">input_spec</span> <span class="o">=</span> <span class="n">_MergeROIsInputSpec</span>
+    <span class="n">output_spec</span> <span class="o">=</span> <span class="n">_MergeROIsOutputSpec</span>
+
+    <span class="k">def</span> <span class="nf">_run_interface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">runtime</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="s2">"out_file"</span><span class="p">]</span> <span class="o">=</span> <span class="n">_merge_rois</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">in_files</span><span class="p">,</span> <span class="n">newpath</span><span class="o">=</span><span class="n">runtime</span><span class="o">.</span><span class="n">cwd</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">runtime</span></div>
 
 
@@ -677,6 +722,37 @@
         <span class="k">return</span> <span class="n">runtime</span></div>
 
 
+<span class="k">class</span> <span class="nc">_MapLabelsInputSpec</span><span class="p">(</span><span class="n">BaseInterfaceInputSpec</span><span class="p">):</span>
+    <span class="n">in_file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Segmented NIfTI"</span><span class="p">)</span>
+    <span class="n">mappings</span> <span class="o">=</span> <span class="n">traits</span><span class="o">.</span><span class="n">Dict</span><span class="p">(</span>
+        <span class="n">xor</span><span class="o">=</span><span class="p">[</span><span class="s2">"mappings_file"</span><span class="p">],</span>
+        <span class="n">desc</span><span class="o">=</span><span class="s2">"Dictionary of label / replacement label pairs"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">mappings_file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span>
+        <span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xor</span><span class="o">=</span><span class="p">[</span><span class="s2">"mappings"</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s2">"JSON composed of label / replacement label pairs."</span>
+    <span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_MapLabelsOutputSpec</span><span class="p">(</span><span class="n">TraitedSpec</span><span class="p">):</span>
+    <span class="n">out_file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Labeled file"</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="MapLabels"><a class="viewcode-back" href="../../../api/niworkflows.interfaces.nibabel.html#niworkflows.interfaces.nibabel.MapLabels">[docs]</a><span class="k">class</span> <span class="nc">MapLabels</span><span class="p">(</span><span class="n">SimpleInterface</span><span class="p">):</span>
+    <span class="sd">"""Remap discrete labels"""</span>
+
+    <span class="n">input_spec</span> <span class="o">=</span> <span class="n">_MapLabelsInputSpec</span>
+    <span class="n">output_spec</span> <span class="o">=</span> <span class="n">_MapLabelsOutputSpec</span>
+
+    <span class="k">def</span> <span class="nf">_run_interface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">runtime</span><span class="p">):</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">mappings</span> <span class="ow">or</span> <span class="n">_load_int_json</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">mappings_file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="s2">"out_file"</span><span class="p">]</span> <span class="o">=</span> <span class="n">_remap_labels</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">in_file</span><span class="p">,</span>
+            <span class="n">mapping</span><span class="p">,</span>
+            <span class="n">newpath</span><span class="o">=</span><span class="n">runtime</span><span class="o">.</span><span class="n">cwd</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">runtime</span></div>
+
+
 <span class="k">def</span> <span class="nf">_gen_reference</span><span class="p">(</span>
     <span class="n">fixed_image</span><span class="p">,</span>
     <span class="n">moving_image</span><span class="p">,</span>
@@ -824,6 +900,105 @@
     <span class="n">img</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">hdr</span><span class="p">)</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">out_file</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">out_file</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_dilate</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">newpath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">"""Dilate (binary) input mask."""</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
+    <span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">ndimage</span>
+    <span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <span class="n">ball</span>
+    <span class="kn">from</span> <span class="nn">nipype.utils.filemanip</span> <span class="k">import</span> <span class="n">fname_presuffix</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
+    <span class="n">newdata</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_dilation</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">dataobj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">structure</span><span class="o">=</span><span class="n">ball</span><span class="p">(</span><span class="n">radius</span><span class="p">),</span>
+        <span class="n">iterations</span><span class="o">=</span><span class="n">iterations</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">hdr</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">hdr</span><span class="o">.</span><span class="n">set_data_dtype</span><span class="p">(</span><span class="s2">"uint8"</span><span class="p">)</span>
+    <span class="n">out_file</span> <span class="o">=</span> <span class="n">fname_presuffix</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">"_dil"</span><span class="p">,</span> <span class="n">newpath</span><span class="o">=</span><span class="n">newpath</span> <span class="ow">or</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">())</span>
+    <span class="n">mask</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">newdata</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"uint8"</span><span class="p">),</span> <span class="n">mask</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">hdr</span><span class="p">)</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">out_file</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out_file</span>
+
+
+<span class="k">def</span> <span class="nf">_merge_rois</span><span class="p">(</span><span class="n">in_files</span><span class="p">,</span> <span class="n">newpath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Aggregate individual 4D ROI files together into a single subcortical NIfTI.</span>
+<span class="sd">    All ROI images are sanity checked with regards to:</span>
+<span class="sd">    1) Shape</span>
+<span class="sd">    2) Affine</span>
+<span class="sd">    3) Overlap</span>
+
+<span class="sd">    If any of these checks fail, an ``AssertionError`` will be raised.</span>
+<span class="sd">    """</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
+    <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+    <span class="n">img</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">in_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">dataobj</span><span class="p">)</span>
+    <span class="n">affine</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">affine</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">header</span>
+
+    <span class="n">nonzero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="n">in_files</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">"Mismatch in image shape"</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">affine</span><span class="p">),</span> <span class="s2">"Mismatch in affine"</span>
+        <span class="n">roi_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">dataobj</span><span class="p">)</span>
+        <span class="n">roi_nonzero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">roi_data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">roi_nonzero</span> <span class="o">&amp;</span> <span class="n">nonzero</span><span class="p">),</span> <span class="s2">"Overlapping ROIs"</span>
+        <span class="n">nonzero</span> <span class="o">|=</span> <span class="n">roi_nonzero</span>
+        <span class="n">data</span> <span class="o">+=</span> <span class="n">roi_data</span>
+        <span class="k">del</span> <span class="n">roi_data</span>
+
+    <span class="k">if</span> <span class="n">newpath</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">newpath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span>
+    <span class="n">out_file</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">Path</span><span class="p">(</span><span class="n">newpath</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"combined.nii.gz"</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span>
+    <span class="n">img</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">affine</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">out_file</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out_file</span>
+
+
+<span class="k">def</span> <span class="nf">_remap_labels</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">newpath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
+    <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">dataobj</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_relabel</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">mapping</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>  <span class="c1"># include all labels present</span>
+    <span class="c1"># copy values and substitute mappings</span>
+    <span class="n">subs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">_relabel</span><span class="p">,</span> <span class="n">labels</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">subbed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">subbed</span><span class="p">[</span><span class="n">labels</span><span class="p">]</span> <span class="o">=</span> <span class="n">subs</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">subbed</span><span class="p">[</span><span class="n">vec</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">newpath</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">newpath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span>
+    <span class="n">out_file</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">Path</span><span class="p">(</span><span class="n">newpath</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"relabeled.nii.gz"</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span>
+    <span class="n">img</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">img</span><span class="o">.</span><span class="n">header</span><span class="p">)</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">out_file</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out_file</span>
+
+
+<span class="k">def</span> <span class="nf">_load_int_json</span><span class="p">(</span><span class="n">json_file</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">json</span>
+
+    <span class="k">def</span> <span class="nf">_keys_as_ints</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">):</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">object_hook</span><span class="o">=</span><span class="n">_keys_as_ints</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
 </pre></div>
         </article>
       </div>

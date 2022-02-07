@@ -5,8 +5,8 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.interfaces.nilearn module" href="niworkflows.interfaces.nilearn.html" /><link rel="prev" title="niworkflows.interfaces.itk module" href="niworkflows.interfaces.itk.html" />
 
-    <meta name="generator" content="sphinx-4.3.2, furo 2021.10.09"/>
-        <title>niworkflows.interfaces.nibabel module - niworkflows 1.4.5+9.g836b0b5a documentation</title>
+    <meta name="generator" content="sphinx-4.4.0, furo 2021.10.09"/>
+        <title>niworkflows.interfaces.nibabel module - niworkflows 1.4.5+18.g8fc145d9 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">niworkflows 1.4.5+9.g836b0b5a documentation</div></a>
+      <a href="../index.html"><div class="brand">niworkflows 1.4.5+18.g8fc145d9 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -315,6 +315,28 @@
 </dl>
 </dd></dl>
 <dl class="py class">
+<dt class="sig sig-object py" id="niworkflows.interfaces.nibabel.BinaryDilation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">niworkflows.interfaces.nibabel.</span></span><span class="sig-name descname"><span class="pre">BinaryDilation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource_monitor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/interfaces/nibabel.html#BinaryDilation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.interfaces.nibabel.BinaryDilation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nipype.interfaces.base.core.SimpleInterface</span></code></p>
+<p>Morphological binary dilation using Scipy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Mandatory Inputs</dt>
+<dd class="field-odd"><p><strong>in_file</strong> (<em>a pathlike object or string representing an existing file</em>) – Binary file to dilate.</p>
+</dd>
+<dt class="field-even">Optional Inputs</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>iterations</strong> (<em>an integer &gt;= 0</em>) – Repeat dilation.
+(Nipype <strong>default</strong> value: <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
+<li><p><strong>radius</strong> (<em>a float</em>) – Structure element (ball) radius.
+(Nipype <strong>default</strong> value: <code class="docutils literal notranslate"><span class="pre">3</span></code>)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Outputs</dt>
+<dd class="field-odd"><p><strong>out_file</strong> (<em>a pathlike object or string representing an existing file</em>) – The input file, after binary dilation.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
 <dt class="sig sig-object py" id="niworkflows.interfaces.nibabel.DemeanImage">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">niworkflows.interfaces.nibabel.</span></span><span class="sig-name descname"><span class="pre">DemeanImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource_monitor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/interfaces/nibabel.html#DemeanImage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.interfaces.nibabel.DemeanImage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nipype.interfaces.base.core.SimpleInterface</span></code></p>
@@ -414,6 +436,39 @@ to that bounding box.</p>
 </dd>
 <dt class="field-odd">Outputs</dt>
 <dd class="field-odd"><p><strong>out_file</strong> (<em>a pathlike object or string representing an existing file</em>) – File after clipping.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="niworkflows.interfaces.nibabel.MapLabels">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">niworkflows.interfaces.nibabel.</span></span><span class="sig-name descname"><span class="pre">MapLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource_monitor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/interfaces/nibabel.html#MapLabels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.interfaces.nibabel.MapLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nipype.interfaces.base.core.SimpleInterface</span></code></p>
+<p>Remap discrete labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Optional Inputs</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_file</strong> (<em>a pathlike object or string representing an existing file</em>) – Segmented NIfTI.</p></li>
+<li><p><strong>mappings</strong> (<em>a dictionary with keys which are any value and with values which are any value</em>) – Dictionary of label / replacement label pairs.
+Mutually <strong>exclusive</strong> with inputs: <code class="docutils literal notranslate"><span class="pre">mappings_file</span></code>.</p></li>
+<li><p><strong>mappings_file</strong> (<em>a pathlike object or string representing an existing file</em>) – Mutually <strong>exclusive</strong> with inputs: <code class="docutils literal notranslate"><span class="pre">mappings</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Outputs</dt>
+<dd class="field-even"><p><strong>out_file</strong> (<em>a pathlike object or string representing an existing file</em>) – Labeled file.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="niworkflows.interfaces.nibabel.MergeROIs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">niworkflows.interfaces.nibabel.</span></span><span class="sig-name descname"><span class="pre">MergeROIs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource_monitor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/interfaces/nibabel.html#MergeROIs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.interfaces.nibabel.MergeROIs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">nipype.interfaces.base.core.SimpleInterface</span></code></p>
+<p>Combine multiple region of interest files (3D or 4D) into a single file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Optional Inputs</dt>
+<dd class="field-odd"><p><strong>in_files</strong> (<em>a list of items which are a pathlike object or string representing an existing file</em>) – ROI files to be merged.</p>
+</dd>
+<dt class="field-even">Outputs</dt>
+<dd class="field-even"><p><strong>out_file</strong> (<em>a pathlike object or string representing an existing file</em>) – NIfTI containing all ROIs.</p>
 </dd>
 </dl>
 </dd></dl>
