@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.interfaces.probmaps module" href="niworkflows.interfaces.probmaps.html" /><link rel="prev" title="niworkflows.interfaces.patches module" href="niworkflows.interfaces.patches.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2021.10.09"/>
-        <title>niworkflows.interfaces.plotting module - niworkflows 1.5.0+14.gb58e383c documentation</title>
+        <title>niworkflows.interfaces.plotting module - niworkflows 1.5.0+19.g1942c838 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">niworkflows 1.5.0+14.gb58e383c documentation</div></a>
+      <a href="../index.html"><div class="brand">niworkflows 1.5.0+19.g1942c838 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -329,19 +329,18 @@
 <p>Prepare an fMRI summary plot for the report.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Mandatory Inputs</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dvars</strong> (<em>a pathlike object or string representing an existing file</em>)</p></li>
-<li><p><strong>fd</strong> (<em>a pathlike object or string representing an existing file</em>)</p></li>
-<li><p><strong>in_func</strong> (<em>a pathlike object or string representing an existing file</em>)</p></li>
-<li><p><strong>in_spikes_bg</strong> (<em>a pathlike object or string representing an existing file</em>)</p></li>
-<li><p><strong>outliers</strong> (<em>a pathlike object or string representing an existing file</em>)</p></li>
-</ul>
+<dd class="field-odd"><p><strong>in_func</strong> (<em>a pathlike object or string representing an existing file</em>)</p>
 </dd>
 <dt class="field-even">Optional Inputs</dt>
 <dd class="field-even"><ul class="simple">
+<li><p><strong>drop_trs</strong> (<em>an integer</em>) – Dummy scans.
+(Nipype <strong>default</strong> value: <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></li>
+<li><p><strong>dvars</strong> (<em>a pathlike object or string representing an existing file</em>)</p></li>
+<li><p><strong>fd</strong> (<em>a pathlike object or string representing an existing file</em>)</p></li>
 <li><p><strong>fd_thres</strong> (<em>a float</em>) – (Nipype <strong>default</strong> value: <code class="docutils literal notranslate"><span class="pre">0.2</span></code>)</p></li>
-<li><p><strong>in_mask</strong> (<em>a pathlike object or string representing an existing file</em>)</p></li>
 <li><p><strong>in_segm</strong> (<em>a pathlike object or string representing an existing file</em>)</p></li>
+<li><p><strong>in_spikes_bg</strong> (<em>a pathlike object or string representing an existing file</em>)</p></li>
+<li><p><strong>outliers</strong> (<em>a pathlike object or string representing an existing file</em>)</p></li>
 <li><p><strong>tr</strong> (<em>a float or None</em>) – The TR.
 (Nipype <strong>default</strong> value: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
 </ul>

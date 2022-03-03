@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="niworkflows.viz.utils module" href="niworkflows.viz.utils.html" /><link rel="prev" title="niworkflows.viz.notebook module" href="niworkflows.viz.notebook.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2021.10.09"/>
-        <title>niworkflows.viz.plots module - niworkflows 1.5.0+14.gb58e383c documentation</title>
+        <title>niworkflows.viz.plots module - niworkflows 1.5.0+19.g1942c838 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">niworkflows 1.5.0+14.gb58e383c documentation</div></a>
+      <a href="../index.html"><div class="brand">niworkflows 1.5.0+19.g1942c838 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -370,7 +370,7 @@ can readily be assessed).</p></li>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="niworkflows.viz.plots.fMRIPlot">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">niworkflows.viz.plots.</span></span><span class="sig-name descname"><span class="pre">fMRIPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conf_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seg_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usecols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spikes_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_carpet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/viz/plots.html#fMRIPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">niworkflows.viz.plots.</span></span><span class="sig-name descname"><span class="pre">fMRIPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeseries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conf_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usecols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spikes_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nskip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_carpet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paired_carpet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/viz/plots.html#fMRIPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Generates the fMRI Summary Plot.</p>
 <dl class="py attribute">
@@ -378,12 +378,12 @@ can readily be assessed).</p></li>
 <span class="sig-name descname"><span class="pre">confounds</span></span><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot.confounds" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="niworkflows.viz.plots.fMRIPlot.func_file">
-<span class="sig-name descname"><span class="pre">func_file</span></span><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot.func_file" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="niworkflows.viz.plots.fMRIPlot.nskip">
+<span class="sig-name descname"><span class="pre">nskip</span></span><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot.nskip" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="niworkflows.viz.plots.fMRIPlot.mask_data">
-<span class="sig-name descname"><span class="pre">mask_data</span></span><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot.mask_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="niworkflows.viz.plots.fMRIPlot.paired_carpet">
+<span class="sig-name descname"><span class="pre">paired_carpet</span></span><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot.paired_carpet" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="niworkflows.viz.plots.fMRIPlot.plot">
@@ -391,8 +391,8 @@ can readily be assessed).</p></li>
 <dd><p>Main plotter</p>
 </dd></dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="niworkflows.viz.plots.fMRIPlot.seg_data">
-<span class="sig-name descname"><span class="pre">seg_data</span></span><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot.seg_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="niworkflows.viz.plots.fMRIPlot.segments">
+<span class="sig-name descname"><span class="pre">segments</span></span><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot.segments" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="niworkflows.viz.plots.fMRIPlot.sort_carpet">
@@ -403,36 +403,36 @@ can readily be assessed).</p></li>
 <span class="sig-name descname"><span class="pre">spikes</span></span><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot.spikes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="niworkflows.viz.plots.fMRIPlot.timeseries">
+<span class="sig-name descname"><span class="pre">timeseries</span></span><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot.timeseries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
 <dt class="sig sig-object py" id="niworkflows.viz.plots.fMRIPlot.tr">
 <span class="sig-name descname"><span class="pre">tr</span></span><a class="headerlink" href="#niworkflows.viz.plots.fMRIPlot.tr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="niworkflows.viz.plots.plot_carpet">
-<span class="sig-prename descclassname"><span class="pre">niworkflows.viz.plots.</span></span><span class="sig-name descname"><span class="pre">plot_carpet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atlaslabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detrend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nskip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(950,</span> <span class="pre">800)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subplot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ward'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/viz/plots.html#plot_carpet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.viz.plots.plot_carpet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot an image representation of voxel intensities across time also know
-as the “carpet plot” or “Power plot”. See Jonathan Power Neuroimage
-2017 Jul 1; 154:150-158.</p>
+<span class="sig-prename descclassname"><span class="pre">niworkflows.viz.plots.</span></span><span class="sig-name descname"><span class="pre">plot_carpet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detrend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subplot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(900,</span> <span class="pre">1200)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ward'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_trs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/niworkflows/viz/plots.html#plot_carpet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#niworkflows.viz.plots.plot_carpet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot an image representation of voxel intensities across time.</p>
+<p>This kind of plot is known as “carpet plot” or “Power plot”.
+See Jonathan Power Neuroimage 2017 Jul 1; 154:150-158.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>func</strong> (<em>string or nibabel-image object</em>) – Path to NIfTI or CIFTI BOLD image, or a nibabel-image object</p></li>
-<li><p><strong>atlaslabels</strong> (<em>ndarray, optional</em>) – A 3D array of integer labels from an atlas, resampled into <code class="docutils literal notranslate"><span class="pre">img</span></code> space.
-Required if <code class="docutils literal notranslate"><span class="pre">func</span></code> is a NIfTI image.</p></li>
-<li><p><strong>detrend</strong> (<em>boolean, optional</em>) – Detrend and standardize the data prior to plotting.</p></li>
-<li><p><strong>nskip</strong> (<em>int, optional</em>) – Number of volumes at the beginning of the scan marked as nonsteady state.
-Only used by volumetric NIfTI.</p></li>
-<li><p><strong>size</strong> (<em>tuple, optional</em>) – Size of figure.</p></li>
-<li><p><strong>subplot</strong> (<em>matplotlib Subplot, optional</em>) – Subplot to plot figure on.</p></li>
+<li><p><strong>data</strong> (N x T <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.22)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.array</span></code></a>) – The functional data to be plotted (<em>N</em> sampling locations by <em>T</em> timepoints).</p></li>
+<li><p><strong>segments</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>, optional) – A mapping between segment labels (e.g., <cite>“Left Cortex”</cite>) and list of indexes
+in the data array.</p></li>
+<li><p><strong>cmap</strong> (<em>colormap</em>) – Overrides the generation of an automated colormap.</p></li>
+<li><p><strong>tr</strong> (<em>float , optional</em>) – Specify the TR, if specified it uses this value. If left as None,
+# of frames is plotted instead of time.</p></li>
+<li><p><strong>detrend</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional) – Detrend and standardize the data prior to plotting.</p></li>
+<li><p><strong>subplot</strong> (<em>matplotlib subplot, optional</em>) – Subplot to plot figure on.</p></li>
 <li><p><strong>title</strong> (<em>string, optional</em>) – The title displayed on the figure.</p></li>
 <li><p><strong>output_file</strong> (<em>string, or None, optional</em>) – The name of an image file to export the plot to. Valid extensions
 are .png, .pdf, .svg. If output_file is not None, the plot
 is saved to a file, and the display is closed.</p></li>
-<li><p><strong>legend</strong> (<em>bool</em>) – Whether to render the average functional series with <code class="docutils literal notranslate"><span class="pre">atlaslabels</span></code> as
-overlay.</p></li>
-<li><p><strong>tr</strong> (<em>float , optional</em>) – Specify the TR, if specified it uses this value. If left as None,
-# of frames is plotted instead of time.</p></li>
-<li><p><strong>lut</strong> (<em>ndarray, optional</em>) – Look up table for segmentations</p></li>
+<li><p><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a>) – Maximum number of samples to plot (voxels, timepoints)</p></li>
 <li><p><strong>sort_rows</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>) – Apply a clustering algorithm to reorganize the rows of the carpet.
 <code class="docutils literal notranslate"><span class="pre">""</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code>, and <code class="docutils literal notranslate"><span class="pre">None</span></code> skip clustering sorting.
 <code class="docutils literal notranslate"><span class="pre">"linkage"</span></code> uses linkage hierarchical clustering
