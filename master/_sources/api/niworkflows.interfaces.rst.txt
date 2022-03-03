@@ -29,6 +29,7 @@ Submodules
    niworkflows.interfaces.header
    niworkflows.interfaces.images
    niworkflows.interfaces.itk
+   niworkflows.interfaces.morphology
    niworkflows.interfaces.nibabel
    niworkflows.interfaces.nilearn
    niworkflows.interfaces.nitransforms

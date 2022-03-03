@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2021.10.09"/><title>Index - niworkflows 1.5.0+6.ga6abcd85 documentation</title>
+    <meta name="generator" content="sphinx-4.4.0, furo 2021.10.09"/><title>Index - niworkflows 1.5.0+14.gb58e383c documentation</title>
 <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -122,7 +122,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">niworkflows 1.5.0+6.ga6abcd85 documentation</div></a>
+      <a href="index.html"><div class="brand">niworkflows 1.5.0+14.gb58e383c documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -202,6 +202,7 @@
 <li class="toctree-l3"><a class="reference internal" href="api/niworkflows.interfaces.header.html">niworkflows.interfaces.header module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/niworkflows.interfaces.images.html">niworkflows.interfaces.images module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/niworkflows.interfaces.itk.html">niworkflows.interfaces.itk module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/niworkflows.interfaces.morphology.html">niworkflows.interfaces.morphology module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/niworkflows.interfaces.nibabel.html">niworkflows.interfaces.nibabel module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/niworkflows.interfaces.nilearn.html">niworkflows.interfaces.nilearn module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/niworkflows.interfaces.nitransforms.html">niworkflows.interfaces.nitransforms module</a></li>
@@ -321,15 +322,21 @@
 </li>
         <li><a href="api/niworkflows.interfaces.bids.html#niworkflows.interfaces.bids.BIDSFreeSurferDir">BIDSFreeSurferDir (class in niworkflows.interfaces.bids)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/niworkflows.interfaces.bids.html#niworkflows.interfaces.bids.BIDSInfo">BIDSInfo (class in niworkflows.interfaces.bids)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/niworkflows.utils.bids.html#niworkflows.utils.bids.BIDSWarning">BIDSWarning</a>
 </li>
         <li><a href="api/niworkflows.interfaces.nibabel.html#niworkflows.interfaces.nibabel.Binarize">Binarize (class in niworkflows.interfaces.nibabel)</a>
 </li>
-        <li><a href="api/niworkflows.interfaces.nibabel.html#niworkflows.interfaces.nibabel.BinaryDilation">BinaryDilation (class in niworkflows.interfaces.nibabel)</a>
+        <li><a href="api/niworkflows.interfaces.morphology.html#niworkflows.interfaces.morphology.BinaryDilation">BinaryDilation (class in niworkflows.interfaces.morphology)</a>
+
+        <ul>
+          <li><a href="api/niworkflows.interfaces.nibabel.html#niworkflows.interfaces.nibabel.BinaryDilation">(class in niworkflows.interfaces.nibabel)</a>
+</li>
+        </ul></li>
+        <li><a href="api/niworkflows.interfaces.morphology.html#niworkflows.interfaces.morphology.BinarySubtraction">BinarySubtraction (class in niworkflows.interfaces.morphology)</a>
 </li>
         <li><a href="api/niworkflows.interfaces.reportlets.masks.html#niworkflows.interfaces.reportlets.masks.BrainExtractionRPT">BrainExtractionRPT (class in niworkflows.interfaces.reportlets.masks)</a>
 </li>
@@ -561,6 +568,8 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/niworkflows.interfaces.reportlets.segmentation.html#niworkflows.interfaces.reportlets.segmentation.ICA_AROMARPT">ICA_AROMARPT (class in niworkflows.interfaces.reportlets.segmentation)</a>
 </li>
+        <li><a href="api/niworkflows.interfaces.morphology.html#niworkflows.interfaces.morphology.image_binary_dilation">image_binary_dilation() (in module niworkflows.interfaces.morphology)</a>
+</li>
         <li><a href="api/niworkflows.reports.core.html#niworkflows.reports.core.Report.index">index() (niworkflows.reports.core.Report method)</a>
 </li>
         <li><a href="api/niworkflows.anat.ants.html#niworkflows.anat.ants.init_atropos_wf">init_atropos_wf() (in module niworkflows.anat.ants)</a>
@@ -732,6 +741,8 @@
           <li><a href="api/niworkflows.interfaces.images.html#module-niworkflows.interfaces.images">niworkflows.interfaces.images</a>
 </li>
           <li><a href="api/niworkflows.interfaces.itk.html#module-niworkflows.interfaces.itk">niworkflows.interfaces.itk</a>
+</li>
+          <li><a href="api/niworkflows.interfaces.morphology.html#module-niworkflows.interfaces.morphology">niworkflows.interfaces.morphology</a>
 </li>
           <li><a href="api/niworkflows.interfaces.nibabel.html#module-niworkflows.interfaces.nibabel">niworkflows.interfaces.nibabel</a>
 </li>
@@ -964,6 +975,13 @@
 
         <ul>
           <li><a href="api/niworkflows.interfaces.itk.html#module-niworkflows.interfaces.itk">module</a>
+</li>
+        </ul></li>
+        <li>
+    niworkflows.interfaces.morphology
+
+        <ul>
+          <li><a href="api/niworkflows.interfaces.morphology.html#module-niworkflows.interfaces.morphology">module</a>
 </li>
         </ul></li>
         <li>
