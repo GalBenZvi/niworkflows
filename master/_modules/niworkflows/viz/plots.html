@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2021.10.09"/>
-        <title>niworkflows.viz.plots - niworkflows 1.5.0+19.g1942c838 documentation</title>
+        <title>niworkflows.viz.plots - niworkflows 1.5.0+23.g8c0b6a60 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">niworkflows 1.5.0+19.g1942c838 documentation</div></a>
+      <a href="../../../index.html"><div class="brand">niworkflows 1.5.0+23.g8c0b6a60 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -226,6 +226,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../api/niworkflows.utils.images.html">niworkflows.utils.images module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/niworkflows.utils.misc.html">niworkflows.utils.misc module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/niworkflows.utils.spaces.html">niworkflows.utils.spaces module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/niworkflows.utils.timeseries.html">niworkflows.utils.timeseries module</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../api/niworkflows.viz.html">niworkflows.viz package</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -302,7 +303,7 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">gridspec</span> <span class="k">as</span> <span class="n">mgs</span>
 <span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
-<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="k">import</span> <span class="n">ListedColormap</span><span class="p">,</span> <span class="n">Normalize</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="k">import</span> <span class="n">Normalize</span>
 <span class="kn">from</span> <span class="nn">matplotlib.colorbar</span> <span class="k">import</span> <span class="n">ColorbarBase</span>
 
 <span class="n">DINA4_LANDSCAPE</span> <span class="o">=</span> <span class="p">(</span><span class="mf">11.69</span><span class="p">,</span> <span class="mf">8.27</span><span class="p">)</span>
@@ -465,13 +466,15 @@
 <span class="sd">    """</span>
     <span class="k">if</span> <span class="n">segments</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">"brain"</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="s2">"whole brain (voxels)"</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
         <span class="p">}</span>
 
     <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">"tab10"</span><span class="p">)</span><span class="o">.</span><span class="n">colors</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">segments</span><span class="p">)])</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">"tab10"</span><span class="p">)</span><span class="o">.</span><span class="n">colors</span>
     <span class="k">elif</span> <span class="n">cmap</span> <span class="o">==</span> <span class="s2">"paired"</span><span class="p">:</span>
-        <span class="n">cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">"Paired"</span><span class="p">)</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">"Paired"</span><span class="p">)</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
+        <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">colors</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
     <span class="n">vminmax</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">detrend</span><span class="p">:</span>
@@ -512,76 +515,75 @@
     <span class="c1"># Length before decimation</span>
     <span class="n">n_trs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">drop_trs</span>
 
-    <span class="c1"># Define nested GridSpec</span>
-    <span class="n">gs</span> <span class="o">=</span> <span class="n">mgs</span><span class="o">.</span><span class="n">GridSpecFromSubplotSpec</span><span class="p">(</span>
-        <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">subplot_spec</span><span class="o">=</span><span class="n">subplot</span><span class="p">,</span> <span class="n">width_ratios</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="c1"># Segmentation colorbar</span>
-    <span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">segments</span><span class="o">.</span><span class="n">values</span><span class="p">())])</span>
-    <span class="n">ax0</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">ax0</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-    <span class="n">ax0</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-    <span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
-        <span class="n">colors</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span>
-        <span class="n">interpolation</span><span class="o">=</span><span class="s2">"none"</span><span class="p">,</span>
-        <span class="n">aspect</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
-        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span>
-    <span class="p">)</span>
-
-    <span class="n">ax0</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax0</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax0</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"none"</span><span class="p">)</span>
-    <span class="n">ax0</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-
     <span class="c1"># Calculate time decimation factor</span>
     <span class="n">t_dec</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="mf">1.8</span> <span class="o">*</span> <span class="n">n_trs</span><span class="p">)</span> <span class="o">//</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">segments</span><span class="o">.</span><span class="n">values</span><span class="p">())),</span> <span class="n">drop_trs</span><span class="p">::</span><span class="n">t_dec</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">drop_trs</span><span class="p">::</span><span class="n">t_dec</span><span class="p">]</span>
 
-    <span class="c1"># Carpet plot</span>
-    <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
-        <span class="n">data</span><span class="p">,</span>
-        <span class="n">interpolation</span><span class="o">=</span><span class="s2">"nearest"</span><span class="p">,</span>
-        <span class="n">aspect</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
-        <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span>
-        <span class="n">vmin</span><span class="o">=</span><span class="n">vminmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-        <span class="n">vmax</span><span class="o">=</span><span class="n">vminmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">nsegments</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span>
+
+    <span class="c1"># Define nested GridSpec</span>
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">mgs</span><span class="o">.</span><span class="n">GridSpecFromSubplotSpec</span><span class="p">(</span>
+        <span class="n">nsegments</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">,</span>
+        <span class="n">subplot_spec</span><span class="o">=</span><span class="n">subplot</span><span class="p">,</span>
+        <span class="n">hspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+        <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">segments</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
     <span class="p">)</span>
 
-    <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">segments</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="c1"># Carpet plot</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
-    <span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-    <span class="n">xlabel</span> <span class="o">=</span> <span class="s2">"time-points (index)"</span>
-    <span class="n">xticklabels</span> <span class="o">=</span> <span class="p">(</span><span class="n">xticks</span> <span class="o">*</span> <span class="n">n_trs</span> <span class="o">/</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"uint32"</span><span class="p">)</span> <span class="o">+</span> <span class="n">drop_trs</span>
-    <span class="k">if</span> <span class="n">tr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">xlabel</span> <span class="o">=</span> <span class="s2">"time (mm:ss)"</span>
-        <span class="n">xticklabels</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">f</span><span class="s2">"{int(t // 60):02d}:{(t % 60).round(0).astype(int):02d}"</span>
-            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">(</span><span class="n">tr</span> <span class="o">*</span> <span class="n">xticklabels</span><span class="p">)</span>
-        <span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">,</span> <span class="p">:],</span>
+            <span class="n">interpolation</span><span class="o">=</span><span class="s2">"nearest"</span><span class="p">,</span>
+            <span class="n">aspect</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span>
+            <span class="n">vmin</span><span class="o">=</span><span class="n">vminmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="n">vminmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="p">)</span>
 
-    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">xticklabels</span><span class="p">)</span>
-
-    <span class="c1"># Remove and redefine spines</span>
-    <span class="k">for</span> <span class="n">side</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"top"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">]:</span>
         <span class="c1"># Toggle the spine objects</span>
-        <span class="n">ax0</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">side</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"none"</span><span class="p">)</span>
-        <span class="n">ax0</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">side</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">side</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"none"</span><span class="p">)</span>
-        <span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">side</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"top"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"none"</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"top"</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"right"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"none"</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"right"</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s2">"left"</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s2">"bottom"</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"none"</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
-        <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="c1"># Make colored left axis</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span><span class="o">.</span><span class="n">set_capstyle</span><span class="p">(</span><span class="s2">"butt"</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">((</span><span class="s2">"outward"</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+        <span class="c1"># Make all subplots have same xticks</span>
+        <span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">nsegments</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"none"</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">xlabel</span> <span class="o">=</span> <span class="s2">"time-points (index)"</span>
+            <span class="n">xticklabels</span> <span class="o">=</span> <span class="p">(</span><span class="n">xticks</span> <span class="o">*</span> <span class="n">n_trs</span> <span class="o">/</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"uint32"</span><span class="p">)</span> <span class="o">+</span> <span class="n">drop_trs</span>
+            <span class="k">if</span> <span class="n">tr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">xlabel</span> <span class="o">=</span> <span class="s2">"time (mm:ss)"</span>
+                <span class="n">xticklabels</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">f</span><span class="s2">"{int(t // 60):02d}:{(t % 60).round(0).astype(int):02d}"</span>
+                    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">(</span><span class="n">tr</span> <span class="o">*</span> <span class="n">xticklabels</span><span class="p">)</span>
+                <span class="p">]</span>
+
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">xticklabels</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">((</span><span class="s2">"outward"</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"k"</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="o">.</span><span class="mi">8</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">title</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">output_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
@@ -590,7 +592,7 @@
         <span class="n">figure</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">output_file</span>
 
-    <span class="k">return</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">),</span> <span class="n">gs</span></div>
+    <span class="k">return</span> <span class="n">gs</span></div>
 
 
 <div class="viewcode-block" id="spikesplot"><a class="viewcode-back" href="../../../api/niworkflows.viz.plots.html#niworkflows.viz.spikesplot">[docs]</a><span class="k">def</span> <span class="nf">spikesplot</span><span class="p">(</span>
