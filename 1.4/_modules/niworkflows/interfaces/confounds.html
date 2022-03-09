@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.3.1, furo 2021.10.09"/>
-        <title>niworkflows.interfaces.confounds - niworkflows 1.4.5 documentation</title>
+    <meta name="generator" content="sphinx-4.4.0, furo 2021.10.09"/>
+        <title>niworkflows.interfaces.confounds - niworkflows 1.4.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">niworkflows 1.4.5 documentation</div></a>
+      <a href="../../../index.html"><div class="brand">niworkflows 1.4.6 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,14 +145,14 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
     <span class="sidebar-brand-text">niworkflows</span>
-    <span id="version-slug" class="sidebar-brand-text">1.4.5</span>
+    <span id="version-slug" class="sidebar-brand-text">1.4.6</span>
 </a>
 
 <!-- Versions dropdown -->
 <div id="version-menu" class="version-tree">
   <ul>
   <li class="toctree-l1 has-children">
-  <span class="sidebar-brand-text">1.4.5</span>
+  <span class="sidebar-brand-text">1.4.6</span>
   <input class="toctree-checkbox" id="toctree-checkbox-v" name="toctree-checkbox-v" role="switch" type="checkbox">
   <label for="toctree-checkbox-v"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label>
   <ul id="v-tags"></ul>
@@ -352,24 +352,26 @@
 <span class="s2">Formula for generating model expansions. By default, the</span>
 <span class="s2">32-parameter expansion will be generated. Note that any expressions</span>
 <span class="s2">to be expanded *must* be in parentheses, even if they include only</span>
-<span class="s2">a single variable (e.g., ``(x)^2``, not ``x^2``). Examples:</span>
+<span class="s2">a single variable (e.g., ``(x)^2``, not ``x^2``).</span>
 
-<span class="s2">* ``rps + wm + csf + gsr`` : 9-parameter model. ``rps`` denotes realignment</span>
-<span class="s2">  parameters, ``wm`` denotes mean white matter signal, ``csf`` denotes mean</span>
-<span class="s2">  cerebrospinal fluid signal, and ``gsr`` denotes mean global signal.</span>
-<span class="s2">* ``(dd1(rps + wm + csf + gsr))^^2`` : 36-parameter expansion.</span>
-<span class="s2">  ``rps + wm + csf + gsr`` denotes that realignment parameters and mean</span>
-<span class="s2">  WM, CSF, and global signals should be included. ``dd1`` denotes that</span>
-<span class="s2">  these signals should be augmented with their first temporal</span>
-<span class="s2">  derivatives. ``^^2`` denotes that the original signals and temporal</span>
-<span class="s2">  derivatives should be augmented with quadratic expansions.</span>
-<span class="s2">* ``(dd1(rps))^^2`` : 24-parameter expansion. ``rps`` denotes that</span>
-<span class="s2">  realignment parameters should be included. ``dd1`` and ``^^2`` denote</span>
-<span class="s2">  temporal derivative and quadratic expansions as above.</span>
-<span class="s2">* ``(dd1(rps + wm + csf + gsr))^^2 + others`` : generate all expansion</span>
-<span class="s2">  terms necessary for a 36-parameter model as above, and</span>
-<span class="s2">  concatenate those expansion terms to all other regressor columns</span>
-<span class="s2">  in the confounds file.</span>
+<span class="s2">Examples:</span>
+
+<span class="s2">  * ``rps + wm + csf + gsr`` : 9-parameter model. ``rps`` denotes realignment</span>
+<span class="s2">    parameters, ``wm`` denotes mean white matter signal, ``csf`` denotes mean</span>
+<span class="s2">    cerebrospinal fluid signal, and ``gsr`` denotes mean global signal.</span>
+<span class="s2">  * ``(dd1(rps + wm + csf + gsr))^^2`` : 36-parameter expansion.</span>
+<span class="s2">    ``rps + wm + csf + gsr`` denotes that realignment parameters and mean</span>
+<span class="s2">    WM, CSF, and global signals should be included. ``dd1`` denotes that</span>
+<span class="s2">    these signals should be augmented with their first temporal</span>
+<span class="s2">    derivatives. ``^^2`` denotes that the original signals and temporal</span>
+<span class="s2">    derivatives should be augmented with quadratic expansions.</span>
+<span class="s2">  * ``(dd1(rps))^^2`` : 24-parameter expansion. ``rps`` denotes that</span>
+<span class="s2">    realignment parameters should be included. ``dd1`` and ``^^2`` denote</span>
+<span class="s2">    temporal derivative and quadratic expansions as above.</span>
+<span class="s2">  * ``(dd1(rps + wm + csf + gsr))^^2 + others`` : generate all expansion</span>
+<span class="s2">    terms necessary for a 36-parameter model as above, and</span>
+<span class="s2">    concatenate those expansion terms to all other regressor columns</span>
+<span class="s2">    in the confounds file.</span>
 
 <span class="s2">"""</span><span class="p">,</span>
     <span class="p">)</span>
@@ -937,7 +939,7 @@
         </div>
 
         <div class="related-information">
-              Copyright &#169; Copyright 2021, The NiPreps Developers |
+              Copyright &#169; Copyright 2022, The NiPreps Developers |
             Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
               and
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s

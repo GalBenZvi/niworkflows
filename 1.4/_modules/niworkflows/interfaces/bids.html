@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.3.1, furo 2021.10.09"/>
-        <title>niworkflows.interfaces.bids - niworkflows 1.4.5 documentation</title>
+    <meta name="generator" content="sphinx-4.4.0, furo 2021.10.09"/>
+        <title>niworkflows.interfaces.bids - niworkflows 1.4.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">niworkflows 1.4.5 documentation</div></a>
+      <a href="../../../index.html"><div class="brand">niworkflows 1.4.6 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,14 +145,14 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
     <span class="sidebar-brand-text">niworkflows</span>
-    <span id="version-slug" class="sidebar-brand-text">1.4.5</span>
+    <span id="version-slug" class="sidebar-brand-text">1.4.6</span>
 </a>
 
 <!-- Versions dropdown -->
 <div id="version-menu" class="version-tree">
   <ul>
   <li class="toctree-l1 has-children">
-  <span class="sidebar-brand-text">1.4.5</span>
+  <span class="sidebar-brand-text">1.4.6</span>
   <input class="toctree-checkbox" id="toctree-checkbox-v" name="toctree-checkbox-v" role="switch" type="checkbox">
   <label for="toctree-checkbox-v"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label>
   <ul id="v-tags"></ul>
@@ -902,12 +902,17 @@
                             <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">space</span> <span class="ow">in</span> <span class="n">STANDARD_SPACES</span> <span class="k">else</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
                         <span class="p">)</span>
 
-                    <span class="k">if</span> <span class="n">curr_codes</span> <span class="o">!=</span> <span class="n">xcodes</span> <span class="ow">or</span> <span class="n">curr_units</span> <span class="o">!=</span> <span class="n">units</span><span class="p">:</span>
+                    <span class="n">curr_zooms</span> <span class="o">=</span> <span class="n">zooms</span> <span class="o">=</span> <span class="n">hdr</span><span class="o">.</span><span class="n">get_zooms</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="s2">"RepetitionTime"</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+                        <span class="n">zooms</span> <span class="o">=</span> <span class="n">curr_zooms</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">RepetitionTime</span><span class="p">,)</span>
+
+                    <span class="k">if</span> <span class="p">(</span><span class="n">curr_codes</span><span class="p">,</span> <span class="n">curr_units</span><span class="p">,</span> <span class="n">curr_zooms</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="n">xcodes</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">zooms</span><span class="p">):</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="s2">"fixed_hdr"</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
                         <span class="n">new_header</span> <span class="o">=</span> <span class="n">hdr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
                         <span class="n">new_header</span><span class="o">.</span><span class="n">set_qform</span><span class="p">(</span><span class="n">nii</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">xcodes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
                         <span class="n">new_header</span><span class="o">.</span><span class="n">set_sform</span><span class="p">(</span><span class="n">nii</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">xcodes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
                         <span class="n">new_header</span><span class="o">.</span><span class="n">set_xyzt_units</span><span class="p">(</span><span class="o">*</span><span class="n">units</span><span class="p">)</span>
+                        <span class="n">new_header</span><span class="o">.</span><span class="n">set_zooms</span><span class="p">(</span><span class="n">zooms</span><span class="p">)</span>
 
                 <span class="k">if</span> <span class="n">data_dtype</span> <span class="o">==</span> <span class="s2">"source"</span><span class="p">:</span>  <span class="c1"># match source dtype</span>
                     <span class="k">try</span><span class="p">:</span>
@@ -936,6 +941,7 @@
                         <span class="n">new_header</span><span class="o">.</span><span class="n">set_data_dtype</span><span class="p">(</span><span class="n">data_dtype</span><span class="p">)</span>
                 <span class="k">del</span> <span class="n">nii</span>
 
+            <span class="n">out_file</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">new_data</span> <span class="ow">is</span> <span class="n">new_header</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">_copy_any</span><span class="p">(</span><span class="n">orig_file</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">out_file</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
@@ -976,9 +982,11 @@
                             <span class="n">legacy_metadata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">legacy_metadata</span><span class="p">:</span>
                         <span class="n">sidecar</span> <span class="o">=</span> <span class="n">out_file</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">f</span><span class="s2">"{_splitext(str(out_file))[0]}.json"</span>
+                        <span class="n">sidecar</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                         <span class="n">sidecar</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">dumps</span><span class="p">(</span><span class="n">legacy_metadata</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
                 <span class="c1"># The future: the extension is the first . and everything after</span>
                 <span class="n">sidecar</span> <span class="o">=</span> <span class="n">out_file</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">f</span><span class="s2">"{out_file.name.split('.', 1)[0]}.json"</span>
+                <span class="n">sidecar</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                 <span class="n">sidecar</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="s2">"out_meta"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sidecar</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">runtime</span></div>
@@ -1184,7 +1192,7 @@
         </div>
 
         <div class="related-information">
-              Copyright &#169; Copyright 2021, The NiPreps Developers |
+              Copyright &#169; Copyright 2022, The NiPreps Developers |
             Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
               and
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
