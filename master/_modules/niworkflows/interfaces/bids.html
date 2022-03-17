@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2021.10.09"/>
-        <title>niworkflows.interfaces.bids - niworkflows 1.5.1 documentation</title>
+        <title>niworkflows.interfaces.bids - niworkflows 1.5.1+5.g3639077f documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">niworkflows 1.5.1 documentation</div></a>
+      <a href="../../../index.html"><div class="brand">niworkflows 1.5.1+5.g3639077f documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,14 +145,14 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
     <span class="sidebar-brand-text">niworkflows</span>
-    <span id="version-slug" class="sidebar-brand-text">1.5.1</span>
+    <span id="version-slug" class="sidebar-brand-text">1.5.1 (dev)</span>
 </a>
 
 <!-- Versions dropdown -->
 <div id="version-menu" class="version-tree">
   <ul>
   <li class="toctree-l1 has-children">
-  <span class="sidebar-brand-text">1.5.1</span>
+  <span class="sidebar-brand-text">1.5.1 (dev)</span>
   <input class="toctree-checkbox" id="toctree-checkbox-v" name="toctree-checkbox-v" role="switch" type="checkbox">
   <label for="toctree-checkbox-v"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label>
   <ul id="v-tags"></ul>
@@ -324,7 +324,7 @@
 <span class="kn">from</span> <span class="nn">templateflow.api</span> <span class="k">import</span> <span class="n">templates</span> <span class="k">as</span> <span class="n">_get_template_list</span>
 <span class="kn">from</span> <span class="nn">..utils.bids</span> <span class="k">import</span> <span class="n">_init_layout</span><span class="p">,</span> <span class="n">relative_to_root</span>
 <span class="kn">from</span> <span class="nn">..utils.images</span> <span class="k">import</span> <span class="n">set_consumables</span><span class="p">,</span> <span class="n">unsafe_write_nifti_header_and_data</span>
-<span class="kn">from</span> <span class="nn">..utils.misc</span> <span class="k">import</span> <span class="n">splitext</span> <span class="k">as</span> <span class="n">_splitext</span><span class="p">,</span> <span class="n">_copy_any</span>
+<span class="kn">from</span> <span class="nn">..utils.misc</span> <span class="k">import</span> <span class="n">splitext</span> <span class="k">as</span> <span class="n">_splitext</span><span class="p">,</span> <span class="n">_copy_any</span><span class="p">,</span> <span class="n">unlink</span>
 
 <span class="n">regz</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\.gz$"</span><span class="p">)</span>
 <span class="n">_pybids_spec</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">_pkgres</span><span class="p">(</span><span class="s2">"niworkflows"</span><span class="p">,</span> <span class="s2">"data/nipreps.json"</span><span class="p">))</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
@@ -943,7 +943,7 @@
                         <span class="n">new_header</span><span class="o">.</span><span class="n">set_data_dtype</span><span class="p">(</span><span class="n">data_dtype</span><span class="p">)</span>
                 <span class="k">del</span> <span class="n">nii</span>
 
-            <span class="n">out_file</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">unlink</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span> <span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">new_data</span> <span class="ow">is</span> <span class="n">new_header</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">_copy_any</span><span class="p">(</span><span class="n">orig_file</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">out_file</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
@@ -984,11 +984,11 @@
                             <span class="n">legacy_metadata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">legacy_metadata</span><span class="p">:</span>
                         <span class="n">sidecar</span> <span class="o">=</span> <span class="n">out_file</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">f</span><span class="s2">"{_splitext(str(out_file))[0]}.json"</span>
-                        <span class="n">sidecar</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                        <span class="n">unlink</span><span class="p">(</span><span class="n">sidecar</span><span class="p">,</span> <span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                         <span class="n">sidecar</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">dumps</span><span class="p">(</span><span class="n">legacy_metadata</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
                 <span class="c1"># The future: the extension is the first . and everything after</span>
                 <span class="n">sidecar</span> <span class="o">=</span> <span class="n">out_file</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">f</span><span class="s2">"{out_file.name.split('.', 1)[0]}.json"</span>
-                <span class="n">sidecar</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">unlink</span><span class="p">(</span><span class="n">sidecar</span><span class="p">,</span> <span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                 <span class="n">sidecar</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="s2">"out_meta"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sidecar</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">runtime</span></div>
